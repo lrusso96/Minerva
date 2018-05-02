@@ -16,3 +16,21 @@
     text-decoration: none;
   }
 }
+
+/* Profile pic */
+.head_profile_pic {
+  float: right;
+  padding-top: 9px;
+  border-color: black;
+  border-width: 2px;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.profile_profile_pic{
+  border-radius: 50%;
+  border-color: black;
+  border-width: 2px;
+}

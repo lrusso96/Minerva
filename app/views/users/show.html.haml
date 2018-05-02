@@ -1,0 +1,5 @@
+%h1
+  = gravatar_for @user
+  = @user.name + " " + @user.surname
+.center
+  %span= "Member since " + registration_day_of(@user)

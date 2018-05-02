@@ -1,10 +1,15 @@
-.jumbotron-fluid.bgdarkgray
-  .col-md-3
-  .col-md-3.center.welcomewriting
-    %h1 Built for scientists
-    %p Minerva is a free platform that helps sharing open access papers all over the world.
-  .col-md-1
-  .col-md-3
-    .container-fluid.welcomeform.center.rounded-1
-      = render 'users/registrations/form'
-  .col-md-2
+- if user_signed_in?
+  .center
+    %h1 Home Page (logged in)
+    = render 'shared/user_info'
+- else
+  .jumbotron-fluid.bgdarkgray
+    .col-md-3
+    .col-md-3.center.welcomewriting
+      %h1 Built for scientists
+      %p Minerva is a free platform that helps sharing open access papers all over the world.
+    .col-md-1
+    .col-md-3
+      .container-fluid.welcomeform.center.rounded-1
+        = render 'users/registrations/form'
+    .col-md-2
