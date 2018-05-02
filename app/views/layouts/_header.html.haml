@@ -3,6 +3,7 @@
     = link_to "Minerva", root_path, id: "logo"
     %nav
       %ul.nav.navbar-nav.navbar-right
+        %li= link_to "All users", users_path
         - if user_signed_in?
           %li.dropdown.head_profile_pic
             %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
@@ -10,8 +11,8 @@
               %span.caret
             %ul.dropdown-menu
               %li.dropdown-header= current_user.name + " " + current_user.surname
-              %li= link_to "Profile", "#"
-              %li= link_to "Settings", "#"
+              %li= link_to "Profile", current_user
+              %li= link_to "Settings", edit_user_registration_path
               %li= link_to "Help", help_path
               %li.divider
               %li= link_to "Log out", destroy_user_session_path, method: :delete
