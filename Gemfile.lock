@@ -86,6 +86,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -95,6 +98,8 @@ GEM
     duktape (1.6.1.0)
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.23-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -231,8 +236,10 @@ DEPENDENCIES
   carrierwave (= 1.2.2)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  date_validator
   devise
   duktape
+  faker
   haml
   jbuilder (~> 2.5)
   jquery-rails
