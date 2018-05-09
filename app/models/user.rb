@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :papers, dependent: :destroy
+
   # page size for will_paginate (test with 1 for now)
   self.per_page = 30
   # Include default devise modules. Others available are:

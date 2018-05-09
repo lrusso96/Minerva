@@ -1,0 +1,6 @@
+.container
+  %h1= @paper.title
+  %h3 Abstract
+  %span= @paper.description
+  %br
+  = link_to "Read full article", @paper.article.url if !@paper.article.file.nil?

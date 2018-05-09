@@ -3,3 +3,17 @@
   = @user.fullname
 .center
   %span= "Member since " + registration_day_of(@user)
+
+.container
+  - if @user.papers.any?
+
+    %h3 Most recent papers
+    %ol
+      - @papers.each do |p|
+        %li
+          %span= p.title
+          %br
+          %span= "Abstract: " + p.description
+          %br
+          - if !p.article.file.nil?
+            %span= link_to "Read article", p.article_url

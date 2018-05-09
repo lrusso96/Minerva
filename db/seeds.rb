@@ -3,8 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#  movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#  Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(name:  'Primo',
              surname: 'Registrato',
@@ -13,7 +13,7 @@ User.create!(name:  'Primo',
              password: 'foobar',
              password_confirmation: 'foobar')
 
-99.times do |n|
+9.times do |n|
   name = Faker::Name.first_name
   surname = Faker::Name.last_name
   email = "example-#{n + 1}@email.com"
@@ -25,4 +25,14 @@ User.create!(name:  'Primo',
                birthdate: date,
                password:              password,
                password_confirmation: password)
+end
+
+# Papers
+users = User.order(:created_at).take(2)
+5.times do
+  title = Faker::Lorem.sentence(5, false, 10)
+  description = Faker::Lorem.sentences.join(' ')
+  users.each do |user|
+    user.papers.create!(description: description, title: title)
+  end
 end
