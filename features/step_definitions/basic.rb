@@ -265,10 +265,9 @@ end
 
 When /^I log in$/ do
   steps %Q{
-    Given I am on the log in page
+    Given I am on log in page
     When I fill in "Email" with "cocomero@email.com"
     And I fill in "Password" with "foobar"
     And I press "Log in"
-    Then I should be on homepage
   }
 end

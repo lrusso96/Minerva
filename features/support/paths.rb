@@ -15,12 +15,14 @@ module NavigationHelpers
 
     when /^homepage$/
       '/'
-    when /^the sign up page$/
+    when /^sign up page$/
       '/users/sign_up'
-    when /^the log in page$/
+    when /^log in page$/
       '/users/sign_in'
-
-
+    when /^contact page$/
+      '/contact'
+    when /^help page$/
+      '/help'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
@@ -30,11 +32,11 @@ module NavigationHelpers
     else
       begin
         page_name =~ /^the (.*) page$/
-        path_components = $1.split(/\s+/)
-        self.send(path_components.push('path').join('_').to_sym)
+        path_components = Regexp.last_match(1).split(/\s+/)
+        send(path_components.push('path').join('_').to_sym)
       rescue NoMethodError, ArgumentError
-        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-          "Now, go and add a mapping in #{__FILE__}"
+        raise "Can't find mapping from \"#{page_name}\" to a path.\n" \
+              "Now, go and add a mapping in #{__FILE__}"
       end
     end
   end
