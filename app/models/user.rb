@@ -15,11 +15,18 @@ class User < ApplicationRecord
   validates :surname, presence: true, length: { maximum: 60 }
   validates :birthdate, presence: true,
                         date: { before: proc { Time.now - 18.year } }
-
+  validates :nickname, length: { maximum: 60 }
+  validates :country, length: { maximum: 2 }
+  validates :website, length: { maximum: 60 }
   # Methods
 
   # fullname
   def fullname
     name + ' ' + surname
+  end
+
+  def country_name
+    c = ISO3166::Country[country]
+    c.translations[I18n.locale.to_s] || country.name
   end
 end

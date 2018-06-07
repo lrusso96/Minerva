@@ -2,7 +2,13 @@
   = gravatar_for @user
   = @user.fullname
 .center
-  %span= "Member since " + registration_day_of(@user)
+  %span= @user.nickname.to_s + " member since " + registration_day_of(@user)
+
+.container
+  %h3 Infos
+  = "My country is " + @user.country_name
+  %br
+  = link_to "More about me", @user.website.to_s
 
 .container
   - if @user.papers.any?

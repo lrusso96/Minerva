@@ -7,6 +7,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'carrierwave',             '1.2.2'
 # CanCan
 gem 'cancancan', '~> 2.0'
+gem 'country_select'
 # Date validator
 gem 'date_validator'
 # Devise

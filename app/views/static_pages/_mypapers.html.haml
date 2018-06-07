@@ -1,0 +1,12 @@
+.container
+  %h1 My recent papers
+  %ul
+    - @papers.each do |p|
+      %li
+        %span= p.title
+        %br
+        %span= "Abstract: " + p.description
+        %br
+        - if !p.article.file.nil?
+          %span= link_to "Read article", p.article_url
+  = link_to "New paper", "#"
