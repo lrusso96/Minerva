@@ -25,6 +25,10 @@ class User < ApplicationRecord
     name + ' ' + surname
   end
 
+  def formatted_nickname
+    "@#{nickname}" unless nickname.to_s.blank?
+  end
+
   def country_name
     c = ISO3166::Country[country]
     c.translations[I18n.locale.to_s] || country.name

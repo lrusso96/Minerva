@@ -2,24 +2,34 @@
   = gravatar_for @user
   = @user.fullname
 .center
-  %span= @user.nickname.to_s + " member since " + registration_day_of(@user)
-
-.container
-  %h3 Infos
-  = "My country is " + @user.country_name
+  = @user.formatted_nickname
+  -if @user.country?
+    = image_tag "country-4x3/#{@user.country.downcase}.svg", width: 32, alt: @user.country, style: "margin-left: 10px"
   %br
-  = link_to "More about me", @user.website.to_s
+  %br
+  = "member since " + registration_day_of(@user)
 
-.container
-  - if @user.papers.any?
+-if @user == current_user
+  .container
+    %h3 Overview
+    = "You signed in #{@user.sign_in_count} times (last time was #{time_ago_in_words(@user.last_sign_in_at)} ago)"
+    %br
+    = "You have uploaded #{@user.papers.size} papers"
+-else
+  .container
+    %h3 Personal website
+    = link_to "More about me", @user.website.to_s
 
-    %h3 Most recent papers
-    %ol
-      - @papers.each do |p|
-        %li
-          %span= p.title
-          %br
-          %span= "Abstract: " + p.description
-          %br
-          - if !p.article.file.nil?
-            %span= link_to "Read article", p.article_url
+  .container
+    - if @user.papers.any?
+
+      %h3 Most recent papers
+      %ol
+        - @papers.each do |p|
+          %li
+            %span= p.title
+            %br
+            %span= "Abstract: " + p.description
+            %br
+            - if !p.article.file.nil?
+              %span= link_to "Read article", p.article_url
