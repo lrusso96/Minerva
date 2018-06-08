@@ -7,4 +7,4 @@ Scenario: basic
 Given I am a registered user
 When I log in
 Then I should be on homepage
-And I should see "My papers"
+And I should see "My recent papers"

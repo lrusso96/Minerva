@@ -7,4 +7,4 @@ Scenario: basic
 Given I am a registered user
 When I log in
 Then I should be on homepage
-And I should see "Feed"
+And I should see "My feed"
