@@ -29,10 +29,11 @@ end
 
 # Papers
 users = User.order(:created_at).take(2)
-5.times do
-  title = Faker::Lorem.sentence(5, false, 10)
-  description = Faker::Lorem.sentences.join(' ')
+2.times do
   users.each do |user|
+    title = Faker::Lorem.sentence(5, false, 10)
+    description = Faker::Lorem.sentences.join(' ')
     user.papers.create!(description: description, title: title)
+    user.papers.last.article.attach(io: File.open(File.join(Rails.root, 'db/files/FakePaper.pdf')), filename: 'FakePaper.pdf')
   end
 end

@@ -25,6 +25,8 @@ module NavigationHelpers
       '/help'
     when /^settings page$/
       '/users/edit'
+    when /^upload paper/
+      '/users/1/papers/new'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

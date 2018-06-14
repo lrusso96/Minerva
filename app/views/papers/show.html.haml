@@ -3,4 +3,7 @@
   %h3 Abstract
   %span= @paper.description
   %br
-  = link_to "Read full article", @paper.article.url if !@paper.article.file.nil?
+  = link_to "Read full article", url_for(@paper.article) if @paper.article.attached?
+  -if current_user == @user
+    %p Unhappy?
+    = button_to "Cancel my account", user_paper_path(@paper), data: { confirm: "Are you sure?" }, method: :delete

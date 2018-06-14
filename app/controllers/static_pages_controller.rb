@@ -1,8 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    if user_signed_in?
-      @papers = current_user.papers.last(5).reverse
-    end
+    return unless user_signed_in?
+    @papers = current_user.papers.last(5).reverse
+    followees = current_user.followees(User)
+    @feed_papers = Paper.where(user_id: followees.map(&:id)).last(5).reverse
   end
 
   def help

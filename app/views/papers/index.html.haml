@@ -6,6 +6,6 @@
       %li
         %span= paper.title
         %span= "(on Minerva since "+ upload_day_of(paper) + ")"
-        - if !paper.article.file.nil?
-          %span= link_to "Read article", paper.article_url
+        - if paper.article.attached?
+          %span= link_to "Read article", url_for(paper.article)
   = will_paginate

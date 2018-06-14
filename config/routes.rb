@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users, only: [:show, :index] do
+    post 'follow',   to: 'socializations#follow'
+    post 'unfollow', to: 'socializations#unfollow'
     resources :papers
   end
 end

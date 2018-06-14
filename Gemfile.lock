@@ -249,6 +249,8 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     sixarm_ruby_unaccent (1.2.0)
+    socialization (1.2.1)
+      activerecord
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     sprockets (3.7.1)
@@ -318,6 +320,7 @@ DEPENDENCIES
   rspec
   sass-rails (~> 5.0)
   selenium-webdriver
+  socialization
   sqlite3
   svg-flags-rails (>= 1.0.0.pre.beta)
   turbolinks (~> 5)

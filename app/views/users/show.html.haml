@@ -15,8 +15,26 @@
     = "You signed in #{@user.sign_in_count} times (last time was #{time_ago_in_words(@user.last_sign_in_at)} ago)"
     %br
     = "You have uploaded #{@user.papers.size} papers"
+    %h3 Followers
+    %ul.followers
+      - @followers.each do |follower|
+        %li
+          = gravatar_for follower, size: 20
+          = link_to follower.fullname, follower
+    %h3 Following
+    %ul.followees
+      - @followees.each do |followee|
+        %li
+          = gravatar_for followee, size: 20
+          = link_to followee.fullname, followee
+          = link_to('Unfollow', user_unfollow_path(followee), method: :post)
+
 -else
   .container
+    -if @user.followed_by?(current_user)
+      = link_to('Unfollow', user_unfollow_path(@user), method: :post)
+    -else
+      = link_to('Follow', user_follow_path(@user), method: :post)
     %h3 Personal website
     = link_to "More about me", @user.website.to_s
 
@@ -31,5 +49,5 @@
             %br
             %span= "Abstract: " + p.description
             %br
-            - if !p.article.file.nil?
-              %span= link_to "Read article", p.article_url
+            - if p.article.attached?
+              %span= link_to "Read article", url_for(p.article)

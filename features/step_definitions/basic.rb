@@ -55,14 +55,19 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   first(:link, link).click
+  #click_link link
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
+  fill_in(field, with: value)
 end
 
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
-  fill_in(field, :with => value)
+  fill_in(field, with: value)
+end
+
+When(/^I attach a paper$/) do
+  attach_file Rails.root.join('db/files/FakePaper.pdf')
 end
 
 # Use this to fill in an entire form with data from a table. Example:
@@ -269,5 +274,18 @@ When /^I log in$/ do
     When I fill in "Email" with "cocomero@email.com"
     And I fill in "Password" with "foobar"
     And I press "Log in"
+  }
+end
+
+When /^I upload a paper$/ do
+  steps %Q{
+    Given I am on homepage
+    When I follow "New paper"
+    Then I should be on upload paper page
+    When I fill in "Title" with "Random title"
+    And I fill in "Description" with "random Description"
+    And I attach a paper
+    And I press "Create Paper"
+    Then I should be on homepage
   }
 end

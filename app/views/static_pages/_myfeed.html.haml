@@ -1,2 +1,11 @@
 .container
   %h1 My feed
+  %ul
+    - @feed_papers.each do |p|
+      %li
+        %span= p.title
+        %br
+        %span= "Abstract: " + p.description
+        %br
+        - if p.article.attached?
+          %span= link_to "Read article", url_for(p.article)

@@ -7,6 +7,6 @@
         %br
         %span= "Abstract: " + p.description
         %br
-        - if !p.article.file.nil?
-          %span= link_to "Read article", p.article_url
-  = link_to "New paper", "#"
+        - if p.article.attached?
+          %span= link_to "Read article", url_for(p.article)
+  = link_to "New paper", new_user_paper_path(current_user.id)
