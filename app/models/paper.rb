@@ -1,6 +1,7 @@
 class Paper < ApplicationRecord
   belongs_to :user
   has_one_attached :article
+  acts_as_likeable
 
   # Validations
   validates :user, presence: true

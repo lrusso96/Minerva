@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :papers, dependent: :destroy
   acts_as_follower
   acts_as_followable
+  acts_as_liker
 
   # page size for will_paginate (test with 1 for now)
   self.per_page = 30

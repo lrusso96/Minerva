@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     post 'follow',   to: 'socializations#follow'
     post 'unfollow', to: 'socializations#unfollow'
-    resources :papers
+    resources :papers do
+      post 'star',   to: 'socializations#star'
+      post 'unstar', to: 'socializations#unstar'
+    end
   end
 end

@@ -3,9 +3,10 @@
   %ul
     - @feed_papers.each do |p|
       %li
-        %span= p.title
+        = link_to p.title, user_paper_path(p.user.id, p.id)
         %br
-        %span= "Abstract: " + p.description
-        %br
+        %span= p.description
         - if p.article.attached?
           %span= link_to "Read article", url_for(p.article)
+          %br
+          %br

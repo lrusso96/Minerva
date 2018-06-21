@@ -21,6 +21,14 @@
         %li
           = gravatar_for follower, size: 20
           = link_to follower.fullname, follower
+
+    %h3 Starred papers
+    %ul.starred_papers
+      - @starred_papers.each do |starred_paper|
+        %li
+          = link_to starred_paper.title, user_paper_path(starred_paper.user.id, starred_paper.id)
+          = link_to('Unstar it', user_paper_unstar_path(paper_id: starred_paper.id, user_id: current_user.id), method: :post)
+
     %h3 Following
     %ul.followees
       - @followees.each do |followee|
@@ -45,9 +53,10 @@
       %ol
         - @papers.each do |p|
           %li
-            %span= p.title
+            = link_to p.title, user_paper_path(p.user.id, p.id)
             %br
-            %span= "Abstract: " + p.description
-            %br
+            %span= p.description
             - if p.article.attached?
               %span= link_to "Read article", url_for(p.article)
+            %br
+            %br
