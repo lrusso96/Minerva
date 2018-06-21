@@ -29,6 +29,12 @@
   }
 }
 
+#testbg {
+  background-image: image_url('logged_homepage_bg_.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #intro.container-fluid{
   background-image: image_url('intro_bg.jpg');
   background-position: 0px 0px;

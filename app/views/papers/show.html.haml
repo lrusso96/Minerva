@@ -1,15 +1,19 @@
-.container
+#paper_overview.container-fluid.left
   %h1= @paper.title
   -if @paper.liked_by?(current_user)
-    = link_to('Unstar it', user_paper_unstar_path(paper_id: @paper.id, user_id: current_user.id), method: :post)
+    = link_to('Unstar it', user_paper_unstar_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
   -else
-    = link_to('Star paper', user_paper_star_path(paper_id: @paper.id, user_id: current_user.id), method: :post)
+    -if current_user != @user
+      = link_to('Star paper', user_paper_star_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
   %h3 Authors
-  = link_to @paper.user.fullname, @paper.user
+  = link_to @paper.user.fullname, @paper.user, class: "authors"
   %h3 Abstract
-  %span= @paper.description
+  %p= @paper.description
+  
   %br
-  = link_to "Read full article", url_for(@paper.article) if @paper.article.attached?
+  
+  = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
   -if current_user == @user
     %h3 Advanced settings
-    = button_to "Delete this paper", user_paper_path(@paper), data: { confirm: "Are you sure?" }, method: :delete
+    %button.btn.btn-danger.btn-delete{data: { confirm: "Are you sure?" }, method: :delete}
+      = link_to "Delete this paper", user_paper_path(@paper)

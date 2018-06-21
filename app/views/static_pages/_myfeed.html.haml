@@ -1,12 +1,20 @@
 .container
-  %h1 My feed
-  %ul
-    - @feed_papers.each do |p|
-      %li
-        = link_to p.title, user_paper_path(p.user.id, p.id)
-        %br
-        %span= p.description
-        - if p.article.attached?
-          %span= link_to "Read article", url_for(p.article)
-          %br
-          %br
+  %h1.head My feeds
+  %hr.my-4
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12 
+      - if !@feed_papers
+        %h3 No Feeds
+      - else 
+      - @feed_papers.each do |p|
+        #paper-card.card
+          .card-body
+            %h3.card-title 
+              = link_to p.title, user_paper_path(p.user.id, p.id)
+            %p.cardsubtitle
+              = link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+            %p.card-text
+              = p.description
+            
+            = link_to "Read article", url_for(p.article), class: "btn btn-primary btn-read-feed" if p.article.attached?
+          

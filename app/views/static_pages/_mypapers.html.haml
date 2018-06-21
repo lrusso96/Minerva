@@ -1,8 +1,8 @@
 .container
   %h1 My recent papers
+  %hr.my-4
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12 
-      %ul
       - @papers.each do |p|
         #paper-card.card
           .card-body
@@ -14,3 +14,5 @@
 
 
   = link_to "New paper", new_user_paper_path(current_user.id), class: "btn btn-primary btn-new-paper"
+
+  
