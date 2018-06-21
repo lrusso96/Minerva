@@ -3,13 +3,158 @@
     = render 'mypapers'
     = render 'myfeed'
 - else
-  .jumbotron-fluid.bgdarkgray
-    .col-md-3
-    .col-md-3.center.welcomewriting
-      %h1 Built for scientists
-      %p Minerva is a free platform that helps sharing open access papers all over the world.
-    .col-md-1
-    .col-md-3
-      .container-fluid.welcomeform.center.rounded-1
-        = render 'users/registrations/form'
-    .col-md-2
+
+  
+  /* Image Slider && Form*/
+  #intro.container-fluid
+    .col-xs-12.col-sm-12.col-md-12.col-lg-6.to-pad
+      #slides.carousel.slide{"data-ride" => 'carousel'}
+        %ol.carousel-indicators
+          %li{"data-target" => '#slides', "data-slide-to" => "0"}
+            .active
+          %li{"data-target" => '#slides', "data-slide-to" => "1"}
+          %li{"data-target" => '#slides', "data-slide-to" => "2"}
+
+        .carousel-inner{:role => 'listbox'}
+          .item.active
+            = image_tag('background.png');
+            .carousel-caption
+              %h1.display-2 Bootstrap
+              %h3 Complete Website Layout
+              %button.btn.btn-outline-light.btn-lg{:type => "button"} View Demo
+              %button.btn.btn-primary.btn-lg{:type => "button"} Get Started
+          .item
+            = image_tag('background2.png');
+          .item
+            = image_tag('background3.png');
+    .col-xs-12.col-sm-12.col-md-12.col-lg-6
+      #form.card
+        =render 'users/registrations/form'
+  .slant
+
+
+  /* Card Services */
+  #services.container
+    .row
+      .col-xs-12.col-sm-6.col-md-4.col-lg-4
+        #services-read.card
+          %i.fas.fa-book
+          %h3.card-title Read
+          %p.card-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          %button.btn.btn-primary.btn-card{:href => '#'} Go to read
+
+      .col-xs-12.col-sm-6.col-md-4.col-lg-4
+        #services-learn.card
+          %i.fas.fa-graduation-cap
+          %h3.card-title Learn
+          %p.card-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          %button.btn.btn-primary.btn-card{:href => '#'} Go to learn
+
+      .col-xs-12.col-sm-6.col-md-4.col-lg-4
+        #services-share.card
+          %i.fas.fa-share-alt
+          %h3.card-title Share
+          %p.card-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          %button.btn.btn-primary.btn-card{:href => '#'} Go to share
+
+  %hr.my-4
+
+  /* Info Section */
+  .container-fluid.padding
+    .row.welcome.text-center
+      .col-12
+        %h1.display-4 Realized with 
+      %hr
+      .col-12
+        %p.lead Welcome to Minerva website, this is a free and open-source front-end library with Bootstrap, Ruby on Rails and CSS based designs.
+
+
+  /* Info Section details */
+  .container-fluid.padding
+    .row.text-center.padding
+
+      .col-xs-12.col-sm-6.col-md-4
+        //%i.fas.fa-code
+        %i.far.fa-gem
+        %h3 Ruby on Rails
+        %p Built with the latest version of Ruby on Rails.
+
+      .col-xs-12.col-sm-6.col-md-4
+        %i.fas.fa-bold
+        %h3 Bootstrap
+        %p Built with Bootstrap 3.
+
+      .col-sm-12.col-md-4
+        %i.fab.fa-css3
+        %h3 CSS3
+        %p Built with the latest version of CSS, CSS3.
+
+  %hr.my-4
+
+
+  /* Meet the team */
+  #team.container-fluid.padding
+    .row.welcome.text-center
+      %h1.display-4 Meet the Team
+      %hr
+      .col-xs-12.col-sm-6.col-md-6.col-lg-6
+        %img.img-circle=image_tag('no_photo.jpg')
+        %h4 Matteo Salvino
+        %b Engineering Student
+        %p Matteo is a student at University La Sapienza of Rome.
+        %a{:href => 'https://github.com/MatteoSalvino'}
+          %i.fab.fa-github
+
+      .col-xs-12.col-sm-6.col-md-6.col-lg-6
+        %img.img-circle=image_tag('no_photo.jpg')
+        %h4 Luigi Russo
+        %b Engineering Student
+        %p Luigi is a student at University La Sapienza of Rome.
+        %a{:href => 'https://github.com/lrusso96'}
+          %i.fab.fa-github
+
+  /* Our goal */
+  .container-fluid.padding
+    .row.padding
+      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+        %h2.display-4 Our Goal
+        %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.
+        %br
+      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+        %img.img-fluid=image_tag('missing-image.png')
+      %hr.my-4
+
+  /* Connect */
+  .container-fluid.padding
+    .row.text-center.padding
+      .col-12
+        %h3.display-4 Connect
+      .col-12.social.padding
+        %a{:href => '#'}
+          %i.fab.fa-facebook
+        %a{:href => '#'}
+          %i.fab.fa-twitter
+        %a{:href => '#'}
+          %i.fab.fa-google-plus
+        %a{:href => '#'}
+          %i.fab.fa-instagram
+        %a{:href => '#'}
+          %i.fab.fa-youtube
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  

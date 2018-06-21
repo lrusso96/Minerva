@@ -12,5 +12,6 @@ class UsersController < ApplicationController
     @followees = @user.followees(User).last(5).reverse
   end
 
-  def new; end
+  def new
+  end
 end

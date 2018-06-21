@@ -1,3 +1,69 @@
 // Place all the styles related to the Papers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#paper-card.card {
+  padding: 0px 0px 0px 0px;
+  float: none;
+  width: 50%;
+  border: 2px solid #1a1aff;
+  border-radius: 5px;
+  margin: 15px auto 15px auto;
+
+  h3 a{
+  	color : #0000e6;
+  	&:hover{
+  		color: #0000b3;
+  		text-decoration: none;
+  	}
+  }
+}
+
+.btn-new-paper {
+	border: 2px solid #0000b3;
+	width: 135px;
+
+	a {
+		color: #fff;
+		&:hover {
+			color: #fff;
+		}
+	}
+}
+
+.label_new{
+	font-size: 20px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.textfield_new{
+  margin-left: 10px;
+  width: 80%;
+  font-size: 15px;
+}
+
+.textarea_new{
+	font-size: 15px;
+	margin-left: 10px;
+	resize: none;
+}
+
+.filefield_new{
+	margin-left: 10px;
+	margin-bottom: 15px;
+}
+
+#btn-new {
+	margin-left: 10px;
+}
+
+
+#paper-form.card {
+	border: 3px solid #404040;
+	border-radius: 5px;
+	float: none;
+	width: 35%;
+	margin : 20px auto 20px auto;
+}

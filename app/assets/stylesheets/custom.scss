@@ -14,12 +14,15 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 50px;
+  height: 100%;
+  width: 100%;
+  color: #222;
 }
 
 section {
   overflow: auto;
 }
+
 
 textarea {
   resize: vertical;
@@ -32,10 +35,12 @@ textarea {
   }
 }
 
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family : Source Sans Pro, Arial, sans-serif;
 }
 
 h1 {
@@ -56,36 +61,109 @@ h2 {
 
 p {
   font-size: 1.1em;
+  color : black;
   line-height: 1.7em;
 }
 
-.bgdarkgray{
-  background-color: #2b3137;
-  overflow: auto;
-  h1{
-    color: white;
+.navbar {
+  padding: .8rem;
+}
+
+#navbar .navbar-nav > li > a{
+  color: #001a4d;
+  font-weight: bold;
+  font-size: 1.1em !important;
+  padding-right: 20px;
+  text-align: center;
+
+  &:hover{
+    color: #fff;
+    text-decoration: underline;
   }
-  p{
-    color: #d7d5dc;
+}
+
+
+#navbar .navbar-nav > li:before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: white;
+}
+
+#navbar li.dropdown-header{
+  font-size: 15px;
+  color: #000;
+}
+
+#navbar ul.dropdown-menu{
+  font-size: 15px;
+  color: #000;
+}
+
+#toggle-nav{
+  border: 1px solid #fff;
+  &:hover{
+    background-color: #c2d6d6;
   }
 }
 
-.rounded-1{
-  border-radius: 3px;
+#toggle-nav span.icon-bar{
+  background-color: #fff;
 }
 
-.welcomeform{
-  background-color: #fafbfc;
-  margin: 30px;
-  padding: 40px;
+
+header{
+  background-image: image_url('intro_bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.welcomewriting{
-  margin-top: 160px;
+#minerva_header .navbar-default{
+  border: transparent;
+  background: transparent;
 }
 
-.btn-green{
-  margin-top: 10px;
-  background-color: #28a745;
+footer{
+  background-color: #3f3f3f;
+  color: #d5d5d5;
+  padding-top: 2rem;
+}
+
+hr.light{
+  border-top: 1px solid #d5d5d5;
+  width: 75%;
+}
+
+footer p{
   color: white;
+  font-weight: bold;
+}
+
+footer h5{
+  font-size: 125%;
+  color: white;
+  font-weight: bold;
+}
+
+
+.field{
+  padding: 5px;
+}
+
+.text-field{
+  padding: 2px 0px 2px 0px;
+  width: 20%;
+}
+
+.btn.btn-green{
+  margin: 10px 0px 10px 6px;
+  background-color: #00cc44;
+  color: white;
+  font-weight: bold;
+  &:hover{
+    color: white;
+    background-color: #00b33c;
+  }
 }
