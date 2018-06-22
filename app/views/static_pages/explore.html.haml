@@ -1,4 +1,16 @@
 .container
+  -unless @found_papers.nil?
+    %h2 Search results
+    %ul
+      - @found_papers.each do |p|
+        %li
+          %h3= p.title
+          %span= p.summary
+          %br
+          %br
+          %span= "Publication date: " + p.published
+          %br
+          = link_to "Read here", p.link.full
   %h1 Top papers
   %ul
     - @top_papers.each do |p|
@@ -14,3 +26,8 @@
         = link_to p.title, user_paper_path(p.user.id, p.id)
         %br
         %span= p.description
+
+  %h2 Search outside Minerva
+  = form_tag(explore_path, method: :get) do
+    #{text_field_tag :query}
+    \#{submit_tag 'Search'}
