@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_172707) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likers_count", default: 0
     t.index ["user_id", "created_at"], name: "index_papers_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_papers_on_user_id"
   end

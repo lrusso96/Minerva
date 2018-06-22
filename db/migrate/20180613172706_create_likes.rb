@@ -8,7 +8,9 @@ class CreateLikes < ActiveRecord::Migration[5.2]
       t.datetime :created_at
     end
 
-    add_index :likes, ["liker_id", "liker_type"],       :name => "fk_likes"
-    add_index :likes, ["likeable_id", "likeable_type"], :name => "fk_likeables"
+    add_index :likes, ["liker_id", "liker_type"],       name: "fk_likes"
+    add_index :likes, ["likeable_id", "likeable_type"], name: "fk_likeables"
+
+    add_column :papers, :likers_count, :integer, default: 0
   end
 end

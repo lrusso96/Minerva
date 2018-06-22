@@ -1,0 +1,16 @@
+.container
+  %h1 Top papers
+  %ul
+    - @top_papers.each do |p|
+      %li
+        = link_to p.title, user_paper_path(p.user.id, p.id)
+        %br
+        %span= p.description
+
+  %h1 Most recent papers
+  %ul
+    - @recent_papers.each do |p|
+      %li
+        = link_to p.title, user_paper_path(p.user.id, p.id)
+        %br
+        %span= p.description

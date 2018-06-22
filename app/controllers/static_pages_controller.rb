@@ -14,4 +14,9 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  def explore
+    @top_papers = Paper.order(:likers_count).last(5).reverse
+    @recent_papers = Paper.order(:created_at).last(5).reverse
+  end
 end
