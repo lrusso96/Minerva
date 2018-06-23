@@ -142,12 +142,8 @@ GEM
     execjs (2.7.0)
     faker (1.8.7)
       i18n (>= 0.7)
-<<<<<<< HEAD
-    ffi (1.9.23)
-    ffi (1.9.23-x86-mingw32)
-=======
+    ffi (1.9.25)
     ffi (1.9.25-x86-mingw32)
->>>>>>> d301cbf863af3581214a76ce5601b69d9bf1a52e
     full-name-splitter (0.1.2)
     gherkin (5.1.0)
     globalid (0.4.1)
@@ -188,13 +184,9 @@ GEM
     multi_json (1.13.1)
     multi_test (0.1.2)
     nio4r (2.3.1)
-<<<<<<< HEAD
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
-    nokogiri (1.8.2-x86-mingw32)
-=======
     nokogiri (1.8.3-x86-mingw32)
->>>>>>> d301cbf863af3581214a76ce5601b69d9bf1a52e
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     public_suffix (3.0.2)
