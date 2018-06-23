@@ -1,6 +1,6 @@
 GIT
   remote: https://gitlab.com/lrusso96/minerva_api.git
-  revision: 2827b30146d4f3fe0a58bfa5a0b5c63b80d7ae25
+  revision: c41de2d6be5686b3735f8e62092c76131b85d317
   specs:
     minerva_api (0.1.1)
       full-name-splitter (~> 0.1.2)
@@ -55,7 +55,7 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (8.5.1)
+    autoprefixer-rails (8.6.3)
       execjs
     backports (3.11.3)
     bcrypt (3.1.12)
@@ -71,7 +71,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.1.0)
+    capybara (3.1.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -104,20 +104,20 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.4)
-    cucumber (3.1.0)
+    cucumber (3.1.1)
       builder (>= 2.1.2)
       cucumber-core (~> 3.1.0)
-      cucumber-expressions (~> 5.0.4)
+      cucumber-expressions (~> 6.0.0)
       cucumber-wire (~> 0.0.1)
       diff-lcs (~> 1.3)
-      gherkin (~> 5.0)
+      gherkin (~> 5.1.0)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.2)
     cucumber-core (3.1.0)
       backports (>= 3.8.0)
       cucumber-tag_expressions (~> 1.1.0)
       gherkin (>= 5.0.0)
-    cucumber-expressions (5.0.18)
+    cucumber-expressions (6.0.1)
     cucumber-rails (1.6.0)
       capybara (>= 1.1.2, < 4)
       cucumber (>= 3.0.2, < 4)
@@ -142,10 +142,14 @@ GEM
     execjs (2.7.0)
     faker (1.8.7)
       i18n (>= 0.7)
+<<<<<<< HEAD
     ffi (1.9.23)
     ffi (1.9.23-x86-mingw32)
+=======
+    ffi (1.9.25-x86-mingw32)
+>>>>>>> d301cbf863af3581214a76ce5601b69d9bf1a52e
     full-name-splitter (0.1.2)
-    gherkin (5.0.0)
+    gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -184,9 +188,13 @@ GEM
     multi_json (1.13.1)
     multi_test (0.1.2)
     nio4r (2.3.1)
+<<<<<<< HEAD
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x86-mingw32)
+=======
+    nokogiri (1.8.3-x86-mingw32)
+>>>>>>> d301cbf863af3581214a76ce5601b69d9bf1a52e
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     public_suffix (3.0.2)
@@ -258,7 +266,7 @@ GEM
       activerecord
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -280,7 +288,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.5)
       tzinfo (>= 1.0.0)
-    uglifier (4.1.10)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
     warden (1.2.7)
@@ -294,7 +302,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
-    xpath (3.0.0)
+    xpath (3.1.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
@@ -307,7 +315,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 1.0.0)
   byebug
   cancancan (~> 2.0)
-  capybara (>= 2.15, < 4.0)
+  capybara (>= 2.15, < 3.2)
   carrierwave (= 1.2.2)
   chromedriver-helper
   coffee-rails (~> 4.2)

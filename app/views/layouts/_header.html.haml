@@ -10,6 +10,7 @@
           %span.icon-bar
       #navbar.navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
+          %li= link_to "Explore", explore_path
           %li= link_to "All users", users_path
           - if user_signed_in?
             %li.dropdown.head_profile_pic
@@ -34,6 +35,3 @@
             %li= link_to "Contact", '#'
             %li= link_to "Log in", new_user_session_path
     
-
-
-
