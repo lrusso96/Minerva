@@ -13,7 +13,7 @@
           %li= link_to "All users", users_path
           - if user_signed_in?
             %li.dropdown.head_profile_pic
-              %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+              %button.btn.btn-primary.dropdown-toggle.btn-toggle-head{"data-toggle" => "dropdown", :type => "button"}
                 %img{:class => "profile_profile_pic" , :src => gravatar_url_for(current_user, size: 20)}/
                 %span.caret
               %ul.dropdown-menu

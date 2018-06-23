@@ -6,7 +6,8 @@
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #001a4d;
+  //color: #001a4d;
+  color: #cccccc;
   text-transform: capitalize;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -27,12 +28,6 @@
     color: white;
     text-decoration: none;
   }
-}
-
-#testbg {
-  background-image: image_url('logged_homepage_bg_.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 #intro.container-fluid{
@@ -319,4 +314,162 @@ hr.light{
   border-radius: 50%;
   height: 170px;
   width: 170px;
+}
+
+#progress-bar {
+  counter-reset: step;
+  margin: 50px 0px 50px 0px;
+}
+
+#progress-bar > li {
+  list-style-type: none;
+  float: left;
+  width: 33%;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+#progress-bar > li:before {
+  content: counter(step);
+  counter-increment: step;
+  font-size: 30px;
+  content : image_url('icon-200px.png');
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ddd;
+  line-height: 200px;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+#progress-bar > li:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  top: 100px;
+  left: -50%;
+  z-index: -1;
+}
+
+
+#progress-bar li:first-child:after {
+  content: none;
+}
+
+#progress-bar li.active {
+  color: green;
+}
+
+
+#progress-bar li.active:before {
+  border-color: green;
+}
+
+#progress-bar li.active + li:after {
+  background-color: green;
+}
+
+.wrapper{
+  display: flex;
+}
+
+#sidebar {
+  width: 250px;
+  min-height: 100vh;
+  position: flex;
+  background-color: #000080;
+  top: 85px;
+  left: 0;
+  color: #fff;
+  transition: all 0.3s;
+  z-index: 998;
+}
+
+#sidebar ul.components li {
+  padding: 5px 0;
+  border-bottom: 1px solid #fff;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  a {
+    color: #cccccc;
+  }
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+
+#sidebar ul li a {
+  font-size: 2rem;
+  margin-left: 5px;
+}
+
+#sidebar ul li.active > a {
+    color: #fff;
+}
+
+#sidebar ul li a:hover{
+  color: #fff;
+  text-decoration: none;
+}
+
+#home-container {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  position: relative;
+}
+
+#sidebarCollapse.toggle-btn {
+  background-color: #0000b3;
+  margin: 1px solid #fff;
+  z-index: 998;
+  &:hover {
+    background-color: #000080;
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100vh;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 997;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+  display: block;
+  top: 0;
+  opacity: 1;
+  width: 100%;
+}
+
+#sidebar .sidebar-header {
+  border-bottom: 1px solid #fff;
+}
+
+#sidebar .sidebar-header > .row > .col-md-6 > img.profile_pic {
+  margin: 10px 0px 10px 10px;
+  border-radius: 100px;
+  padding-right: 0px;
+}
+
+#sidebar .sidebar-header > .row > .col-md-6 {
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+  & > h3 {
+    text-align: left;
+  }
 }

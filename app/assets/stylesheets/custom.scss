@@ -70,7 +70,8 @@ p {
 }
 
 #navbar .navbar-nav > li > a{
-  color: #001a4d;
+  //color: #001a4d;
+  color: #cccccc;
   font-weight: bold;
   font-size: 1.1em !important;
   padding-right: 20px;
@@ -78,7 +79,7 @@ p {
 
   &:hover{
     color: #fff;
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
@@ -120,13 +121,16 @@ header{
   background-size: cover;
 }
 
-#minerva_header .navbar-default{
-  border: transparent;
-  background: transparent;
+#minerva_header {
+  background: #0000b3;
+  .navbar-default {
+    background: #0000b3;
+    border: 0px;
+  }
 }
 
 footer{
-  background-color: #3f3f3f;
+  background-color: #0000b3;
   color: #d5d5d5;
   padding-top: 2rem;
 }
@@ -167,3 +171,18 @@ footer h5{
     background-color: #00b33c;
   }
 }
+
+#navbar > ul > li > button.btn-toggle-head {
+  background-color: transparent;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: #1b69b6;
+  }
+  &:focus {
+    background-color: #fff;
+    & > span.caret{
+      color: #1b69b6;
+    }
+  }
+}
+

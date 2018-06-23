@@ -3,8 +3,12 @@
   %hr.my-4
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12 
-      - if !@feed_papers
-        %h3 No Feeds
+      - if @feed_papers.length == 0
+        #paper-card.card
+          .card-body
+            %h3.card-title No feeds. 
+            %p.card-text  No feeds.
+            
       - else 
       - @feed_papers.each do |p|
         #paper-card.card
@@ -17,4 +21,17 @@
               = p.description
             
             = link_to "Read article", url_for(p.article), class: "btn btn-primary btn-read-feed" if p.article.attached?
-          
+
+
+      .container.testimonial-group
+        .row
+          - @feed_papers.each do |p|
+            .col-xs-6.left
+              #feed-card.card
+                .card-body
+                  %h3.card-title 
+                    = link_to p.title, user_paper_path(p.user.id, p.id)
+                  %p.cardsubtitle
+                    = link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+                  %p.card-text
+                    = p.description

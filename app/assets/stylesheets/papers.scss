@@ -29,13 +29,6 @@
   	margin-top: 15px;
   }
 
-  .author_link {
-  	text-decoration: none;
-  	color: #0000e6;
-  	&:hover{
-  		color: #000099;
-  	}
-  }
 
   .btn-read-feed{
 	margin-bottom: 20px;
@@ -144,3 +137,51 @@
 }
 
 
+.testimonial-group {
+	margin-bottom: 50px;
+	overflow-y: auto;
+}
+
+.testimonial-group > .row {
+	
+}
+.testimonial-group > .row > .col-xs-6 {
+  display: inline-block;
+  float: none;
+}
+
+
+#feed-card.card {
+  padding: 0px 0px 0px 0px;
+  max-width: 100%;
+  float: none;
+  border: 2px solid #1a1aff;
+  border-radius: 5px;
+  margin: 20px auto 25px auto;
+
+  h3 a{
+  	color : #0000e6;
+  	&:hover{
+  		color: #0000b3;
+  		text-decoration: none;
+  	}
+  }
+
+  .card-body p.cardsubtitle {
+  	text-align: left;
+  	word-wrap: break-word;
+  }
+
+  .card-body .author_link {
+  	text-decoration: none;
+  	color: #0000e6;
+  	&:hover{
+  		color: #000099;
+  	}
+  }
+
+  .card-body p.card-text {
+  	text-align: left;
+  }
+
+}
