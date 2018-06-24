@@ -1,5 +1,22 @@
+
 :javascript
   toggle();
+  linkManagement();
+
+  function updateView(elem){
+      if(elem == 'RecentLink'){
+        $('#home-container').html("#{j render(:partial => 'static_pages/mypapers')}");
+      }
+      else if(elem == 'FeedLink'){
+        $('#home-container').html("#{j render(:partial => 'static_pages/myfeed')}");
+      }
+      else if(elem == 'MarkLink'){
+        $('#home-container').html('papermark section');
+      }
+      else if(elem == 'CollectionLink'){
+        $('#home-container').html('collection section');
+      }
+  }
 
 - if user_signed_in?
   .wrapper
@@ -7,48 +24,45 @@
       .sidebar-header
         .row
           .col-md-6
-            %img{:class => "profile_pic" , :src => gravatar_url_for(current_user, size: 85)}
+            %img{:class => "profile_pic" , :src => gravatar_url_for(current_user, size: 50)}
           .col-md-6
-            %h3 Name Surname
+            %h3= current_user.name
 
       %ul.list-unstyled.components
-        %li.active
-          %a{:href => '#'} 
+        %li#RecentLink.active
+          %a{:href => '#'}
             %i.far.fa-newspaper
             Recent Papers
-        %li
-          %a{:href => '#'} 
+        %li#FeedLink
+          %a{:href => '#'}
             %i.fas.fa-rss
             Feed Papers
-        %li
-          %a{:href => '#'} 
+        %li#MarkLink
+          %a{:href => '#'}
             %i.far.fa-star
             Papermark
-        %li
-          %a{:href => '#'} 
+        %li#CollectionLink
+          %a{:href => '#'}
             %i.fas.fa-box-open
             Collection
     #content
-      %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %nav.navbar.navbar-expand-lg.navbar-light
         .container-fluid
           %button#sidebarCollapse.btn.btn-info.toggle-btn
             %i.fas.fa-align-justify
     .overlay
-    #home-container.container
-      %h2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      %h3 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      %h4 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    #home-container.container-fluid
+      = render 'mypapers'
     //%ul#progress-bar.progressbar
     //  %li.active Start
     //  %li Follow
     //  %li Step 3
-    
+
 
     //= render 'mypapers'
     //= render 'myfeed'
 - else
 
-  
   /* Image Slider && Form*/
   #intro.container-fluid
     .col-xs-12.col-sm-12.col-md-12.col-lg-6.to-pad
@@ -107,7 +121,7 @@
   .container-fluid.padding
     .row.welcome.text-center
       .col-12
-        %h1.display-4 Realized with 
+        %h1.display-4 Realized with
       %hr
       .col-12
         %p.lead Welcome to Minerva website, this is a free and open-source front-end library with Bootstrap, Ruby on Rails and CSS based designs.
@@ -184,21 +198,3 @@
           %i.fab.fa-instagram
         %a{:href => '#'}
           %i.fab.fa-youtube
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  

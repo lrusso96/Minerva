@@ -94,13 +94,14 @@ p {
 }
 
 #navbar li.dropdown-header{
-  font-size: 15px;
+  font-size: 15px !important;
   color: #000;
 }
 
-#navbar ul.dropdown-menu{
-  font-size: 15px;
-  color: #000;
+
+
+#btn-menu > li > a{
+  font-size: 15px !important;
 }
 
 #toggle-nav{
@@ -125,7 +126,8 @@ header{
   background: #0000b3;
   .navbar-default {
     background: #0000b3;
-    border: 0px;
+    box-shadow: 0 0 0 0 transparent !important;
+    border: 0px solid transparent !important;
   }
 }
 
@@ -173,13 +175,15 @@ footer h5{
 }
 
 #navbar > ul > li > button.btn-toggle-head {
-  background-color: transparent;
-  border: 1px solid transparent;
+  box-shadow: 0 0 0 0 transparent !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  margin: auto 0 auto 0;
   &:hover {
-    background-color: #1b69b6;
+    background-color: #1b69b6 !important;
   }
   &:focus {
-    background-color: #fff;
+    background-color: #fff !important;
     & > span.caret{
       color: #1b69b6;
     }

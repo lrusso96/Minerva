@@ -1,24 +1,31 @@
-.container
-  %h1 My recent papers
-  %hr.my-4
+#recent-container.container-fluid
   .row
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12 
-      - if @papers.length == 0
-        #paper-card.card
-          .card-body
-            %h3.card-title No Papers. 
-            %p.card-text  No papers.
-      -else
-      - @papers.each do |p|
-        #paper-card.card
-          .card-body
-            %h3.card-title 
-              = link_to p.title, user_paper_path(p.user.id, p.id)
-            %p.card-text 
-              = p.description
-
-
-
-  = link_to "New paper", new_user_paper_path(current_user.id), class: "btn btn-primary btn-new-paper"
-
-  
+    - if @papers.to_s.length != 0
+      .col-xs-10.col-sm-10.col-md-10.col-lg-10
+        %h1 My recent papers
+        %hr.my-4
+        .row
+          - @papers.each do |p|
+            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+              #recentCard.card.card-cascade-narrower
+                .view.view-cascade.gradient-card-header
+                  %h2.card-header.title
+                    = p.title
+                  %h3= p.user.fullname
+                  %h5
+                    %i.far.fa-calendar-alt
+                    %span= upload_day_of p
+                %p.card-text
+                  = p.description
+                .row
+                  = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                .row
+                  #cardFooter.card-footer
+                    Topics
+      .col-xs-2.col-sm-2.col-md-2.col-lg-2
+        = link_to new_user_paper_path(current_user.id), class: "btn btn-info btn-new-paper" do
+          %i.fas.fa-plus
+    - else
+      .col-xs-10.col-sm-10.col-md-10.col-lg-10
+        %h1 My recent papers
+        %hr.my-4

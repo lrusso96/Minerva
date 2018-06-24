@@ -17,10 +17,10 @@
               %button.btn.btn-primary.dropdown-toggle.btn-toggle-head{"data-toggle" => "dropdown", :type => "button"}
                 %img{:class => "profile_profile_pic" , :src => gravatar_url_for(current_user, size: 20)}/
                 %span.caret
-              %ul.dropdown-menu
+              %ul#btn-menu.dropdown-menu
                 %li.dropdown-header
-                  %b=current_user.name + " " + current_user.surname
-                %li.dropdown-header= '@'+current_user.name+current_user.surname
+                  %b=current_user.fullname
+                %li.dropdown-header= current_user.formatted_nickname
                 %li.divider
                 %li= link_to "Profile", current_user
                 %li= link_to "Settings", edit_user_registration_path
@@ -34,4 +34,3 @@
             %li= link_to "Help", help_path
             %li= link_to "Contact", '#'
             %li= link_to "Log in", new_user_session_path
-    

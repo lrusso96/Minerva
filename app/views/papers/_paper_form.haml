@@ -2,14 +2,14 @@
   .container-fluid.left
     .row
       .field
-        = f.label:title, class:"label_new"
+        = f.label :title, class:"label_new"
         %br
-        = f.text_field:title, autofocus:true, autocomplete:"on", class:"textfield_new"
+        = f.text_field :title, autofocus:true, autocomplete:"on", class:"textfield_new", maxlength: '70'
         
       .field
         = f.label:description, class:"label_new"
         %br
-        = f.text_area:description, autofocus:true, autocomplete:"on", class:"textarea_new", rows: '10', cols: '60', maxlength: '510', placeholder: "Insert here the description about your paper."
+        = f.text_area:description, autofocus:true, autocomplete:"on", class:"textarea_new", rows: '10', cols: '61', maxlength: '510', placeholder: "Insert here the description about your paper."
 
       .field
         = f.label :article, class:"label_new"

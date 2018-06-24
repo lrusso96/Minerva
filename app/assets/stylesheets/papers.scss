@@ -70,6 +70,7 @@
 .textarea_new{
 	font-size: 15px;
 	margin-left: 10px;
+	margin-right: 10px;
 	resize: none;
 }
 
@@ -87,7 +88,7 @@
 	border: 3px solid #404040;
 	border-radius: 5px;
 	float: none;
-	width: 35%;
+	width: 80%;
 	margin : 20px auto 20px auto;
 }
 
@@ -183,5 +184,92 @@
   .card-body p.card-text {
   	text-align: left;
   }
+
+}
+
+#recent-container > h1{
+	text-align: center;
+}
+
+#recentCard {
+	overflow: hidden;
+}
+
+#recentCard > .view {
+	background-color: #0000b3;
+
+	& > h2 {
+		color: #fff;
+		font-weight: bold;
+	}
+
+	& > h3 {
+		text-align: center;
+		color: #fff;
+	}
+}
+
+
+
+#recentCard > .view > h5 {
+	text-align: center;
+
+	& > i {
+		font-size: 1.5rem;
+		color: #fff;
+		margin: auto 5px auto 0px;
+	}
+
+	& > span {
+		font-size: 1.5rem;
+		vertical-align: middle;
+		color: #fff;
+	}
+}
+
+#recentCard > p.card-text {
+	margin: 15px 10px 15px 10px;
+	text-align: center;
+}
+
+#recentCard > .row > .btn-read-more {
+	background-color: transparent !important;
+	color: #00b33c !important;
+	border: 1px solid transparent !important;
+	box-shadow: 0 0 0 0 transparent !important;
+	right: 0;
+	margin-right: 10px;
+}
+
+#cardFooter {
+	text-align: left;
+	margin: 5px 30px 5px 30px;
+	border-top: 1px solid #dddddd;
+	padding-top: 5px;
+}
+
+#recent-container > .row > .col-xs-2 > .btn-new-paper {
+	margin: 15px 0px 50px 50px !important;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	text-align: center;
+	padding: 3px;
+	background-color: #fff !important;
+	padding-top: 12px;
+
+	& > i {
+		color: #000080;
+		font-size: 2rem;
+		margin: auto 0px auto 0px;
+	}
+
+	&:hover {
+		box-shadow: 0 0 0 0 transparent;
+		background-color: #000080 !important;
+		& > i {
+			color: #fff;
+		}
+	}
 
 }

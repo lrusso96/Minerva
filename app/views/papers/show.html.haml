@@ -9,11 +9,10 @@
   = link_to @paper.user.fullname, @paper.user, class: "authors"
   %h3 Abstract
   %p= @paper.description
-  
+
   %br
-  
+
   = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
   -if current_user == @user
     %h3 Advanced settings
-    %button.btn.btn-danger.btn-delete{data: { confirm: "Are you sure?" }, method: :delete}
-      = link_to "Delete this paper", user_paper_path(@paper)
+    = button_to "Delete this paper", user_paper_path(@paper), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-delete"
