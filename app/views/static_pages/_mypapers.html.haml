@@ -9,12 +9,12 @@
             .col-xs-4.col-sm-4.col-md-4.col-lg-4
               #recentCard.card.card-cascade-narrower
                 .view.view-cascade.gradient-card-header
-                  %h2.card-header.title 
+                  %h2.card-header.title
                     = p.title
-                  %h3 authors
+                  %h3= p.user.fullname
                   %h5
                     %i.far.fa-calendar-alt
-                    %span 25-12-2012
+                    %span= upload_day_of p
                 %p.card-text
                   = p.description
                 .row
@@ -25,7 +25,7 @@
       .col-xs-2.col-sm-2.col-md-2.col-lg-2
         = link_to new_user_paper_path(current_user.id), class: "btn btn-info btn-new-paper" do
           %i.fas.fa-plus
-    - else 
+    - else
       .col-xs-10.col-sm-10.col-md-10.col-lg-10
         %h1 My recent papers
         %hr.my-4

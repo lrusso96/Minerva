@@ -24,9 +24,9 @@
       .sidebar-header
         .row
           .col-md-6
-            %img{:class => "profile_pic" , :src => gravatar_url_for(current_user, size: 85)}
+            %img{:class => "profile_pic" , :src => gravatar_url_for(current_user, size: 50)}
           .col-md-6
-            %h3 Name Surname
+            %h3= current_user.name
 
       %ul.list-unstyled.components
         %li#RecentLink.active
@@ -34,15 +34,15 @@
             %i.far.fa-newspaper
             Recent Papers
         %li#FeedLink
-          %a{:href => '#'} 
+          %a{:href => '#'}
             %i.fas.fa-rss
             Feed Papers
         %li#MarkLink
-          %a{:href => '#'} 
+          %a{:href => '#'}
             %i.far.fa-star
             Papermark
         %li#CollectionLink
-          %a{:href => '#'} 
+          %a{:href => '#'}
             %i.fas.fa-box-open
             Collection
     #content
@@ -57,12 +57,12 @@
     //  %li.active Start
     //  %li Follow
     //  %li Step 3
-    
+
 
     //= render 'mypapers'
     //= render 'myfeed'
 - else
-  
+
   /* Image Slider && Form*/
   #intro.container-fluid
     .col-xs-12.col-sm-12.col-md-12.col-lg-6.to-pad
@@ -121,7 +121,7 @@
   .container-fluid.padding
     .row.welcome.text-center
       .col-12
-        %h1.display-4 Realized with 
+        %h1.display-4 Realized with
       %hr
       .col-12
         %p.lead Welcome to Minerva website, this is a free and open-source front-end library with Bootstrap, Ruby on Rails and CSS based designs.
@@ -198,21 +198,3 @@
           %i.fab.fa-instagram
         %a{:href => '#'}
           %i.fab.fa-youtube
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
