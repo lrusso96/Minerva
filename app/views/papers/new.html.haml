@@ -1,3 +1,7 @@
 .container-fluid
-  #paper-form.card
-    =render 'papers/paper_form'
+	.row
+		.col-xs-6.col-sm-6.col-md-6.col-lg-6
+			#paper-form.card
+				= render 'papers/paper_form'
+		.col-xs-6.col-sm-6.col-md-6.col-lg-6
+			#paper-preview.card

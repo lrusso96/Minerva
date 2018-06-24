@@ -26,3 +26,22 @@ function toggle() {
 		});
 	});
 }
+
+
+function linkManagement() {
+	$('document').ready(function(){
+		$(".components li a").on("click", function(e){
+			$(".components li.active").removeClass("active");
+		   	$(this).parent().addClass("active");
+		   	e.preventDefault();
+
+		   	//Close sidebar, remove overlay and reset toggle button
+		   	$('#sidebar').addClass('active');
+		   	$('.overlay').removeClass('active');
+		   	$('#sidebarCollapse').html('<i class="fas fa-align-justify"></i>');
+		   	sidebar_on = 0;
+
+		   	updateView($('.components li.active').attr('id'));
+		});
+	});
+}
