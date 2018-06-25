@@ -14,6 +14,21 @@
   </div>
 
   <div class="field">
+  <%= f.label :nickname %><br />
+  <%= f.text_field :nickname, autofocus: true, autocomplete: "on" %>
+</div>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.country_select :country, format: :with_alpha2 , locale: 'it'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website, autofocus: true, autocomplete: "on" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

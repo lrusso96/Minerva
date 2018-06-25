@@ -1,5 +1,5 @@
 class PapersController < ApplicationController
-  #load_and_authorize_resource
+  # load_and_authorize_resource
 
   def index
     @user = User.find_by_id(params[:user_id])
@@ -36,7 +36,7 @@ class PapersController < ApplicationController
     end
     @paper.article.attach(art)
     if @paper.save
-      flash[:success] = "Paper created!"
+      flash[:success] = 'Paper created!'
       redirect_to root_url
       return
     else
@@ -46,7 +46,7 @@ class PapersController < ApplicationController
 
   def destroy
     Paper.find_by_id(params[:id]).destroy
-    redirect_to user_papers_url
+    redirect_to root_url
   end
 
   private
