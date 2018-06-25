@@ -1,0 +1,17 @@
+%header#minerva_header{role:'banner'}
+  .container
+    %nav.navbar.navbar-default
+      .navbar-header
+        = link_to "Minerva", root_path, id:"logo"
+        %button#toggle-nav.navbar-toggle{"data-toggle" => "collapse", "data-target" => "#navbar"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+      #navbar.navbar-collapse.collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to "Explore", explore_path
+          - if user_signed_in?
+            = render 'layouts/header/logged_navbar'
+          - else
+            = render 'layouts/header/common_links'

@@ -10,13 +10,13 @@
               #recentCard.card.card-cascade-narrower
                 .view.view-cascade.gradient-card-header
                   %h2.card-header.title
-                    = p.title
+                    = shorten_title p
                   %h3= p.user.fullname
                   %h5
                     %i.far.fa-calendar-alt
                     %span= upload_day_of p
                 %p.card-text
-                  = p.description
+                  = shorten_abstract p
                 .row
                   = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
                 .row
