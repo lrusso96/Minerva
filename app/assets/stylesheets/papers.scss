@@ -193,6 +193,7 @@
 
 #recentCard {
 	overflow: hidden;
+	margin-bottom: 50px;
 }
 
 #recentCard > .view {
@@ -272,4 +273,91 @@
 		}
 	}
 
+}
+
+#paper-preview > .view > h5 {
+	text-align: center;
+
+	& > i {
+		font-size: 1.5rem;
+		color: #fff;
+		margin: auto 5px auto 0px;
+	}
+
+	& > span {
+		font-size: 1.5rem;
+		vertical-align: middle;
+		color: #fff;
+	}
+}
+
+
+
+#paper-preview {
+	overflow: hidden;
+	margin : 20px auto 20px auto;
+	width: 50%;
+}
+
+#paper-preview > .view {
+	background-image: linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff);
+
+	& > h2 {
+		color: #fff;
+		font-weight: bold;
+	}
+
+	& > h3 {
+		text-align: center;
+		color: #fff;
+	}
+}
+
+#paper-preview > p.card-text {
+		margin: 15px 10px 15px 10px;
+		text-align: center;
+}
+
+
+#paper-preview > .row > .btn-read-more {
+	background-color: transparent !important;
+	color: #00b33c !important;
+	border: 1px solid transparent !important;
+	box-shadow: 0 0 0 0 transparent !important;
+	right: 0;
+	margin-right: 10px;
+}
+
+#paper-preview > .row > .card-footer {
+	text-align: left;
+	margin: 5px 30px 5px 30px;
+	border-top: 1px solid #dddddd;
+	padding-top: 5px;
+
+}
+
+
+#bc1, #bc2, #bc3, #bc4 {
+	padding-left: 25px;
+	padding-top: 10px;
+	margin: 10px 0px 10px 25px !important;
+	border: 1.5px solid #fff;
+	border-radius: 20px;
+
+}
+
+#bc1.btn-color {
+	background-image: linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff);
+}
+
+#bc2.btn-color {
+	background-image: radial-gradient(circle, #f67320, #ff8687, #ffafd2, #fbdbfa, #ffffff);
+}
+
+#bc3.btn-color {
+	background-image: linear-gradient(to right top, #f00000, #ff507b, #ff95cd, #f5d0f8, #ffffff);
+}
+
+#bc4.btn-color {
+	background-image: linear-gradient(to bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff);
 }

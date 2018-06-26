@@ -16,7 +16,10 @@
                     %i.far.fa-calendar-alt
                     %span= upload_day_of p
                 %p.card-text
-                  = p.description
+                  - if p.description.length > 100
+                    = p.description[0..100].concat('...')
+                  - else
+                    = p.description
                 .row
                   = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
                 .row
