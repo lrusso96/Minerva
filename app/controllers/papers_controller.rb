@@ -52,6 +52,6 @@ class PapersController < ApplicationController
   private
 
   def paper_params
-    params.require(:paper).permit(:title, :description, :article)
+    params.require(:paper).permit(:title, :description, :article, :field, :color)
   end
 end
