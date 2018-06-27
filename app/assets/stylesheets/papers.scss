@@ -144,7 +144,7 @@
 }
 
 .testimonial-group > .row {
-	
+
 }
 .testimonial-group > .row > .col-xs-6 {
   display: inline-block;
@@ -300,7 +300,8 @@
 }
 
 #paper-preview > .view {
-	background-image: linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff);
+	//background-image: linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff);
+  background-color: #1fa463;
 
 	& > h2 {
 		color: #fff;
@@ -336,28 +337,31 @@
 
 }
 
-
-#bc1, #bc2, #bc3, #bc4 {
-	padding-left: 25px;
-	padding-top: 10px;
-	margin: 10px 0px 10px 25px !important;
-	border: 1.5px solid #fff;
-	border-radius: 20px;
-
+.materialbc{
+  @extend .btn-color;
+  padding-left: 25px;
+  padding-top: 10px;
+  margin: 10px 0px 10px 25px !important;
+  border: 1.5px solid #fff;
+  border-radius: 20px;
 }
 
-#bc1.btn-color {
-	background-image: linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff);
+#bc1 {
+	//background-image: linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff);
+  background-color: #1fa463;
 }
 
-#bc2.btn-color {
-	background-image: radial-gradient(circle, #f67320, #ff8687, #ffafd2, #fbdbfa, #ffffff);
+#bc2 {
+	//background-image: radial-gradient(circle, #f67320, #ff8687, #ffafd2, #fbdbfa, #ffffff);
+  background-color: #FFD04B;
 }
 
 #bc3.btn-color {
-	background-image: linear-gradient(to right top, #f00000, #ff507b, #ff95cd, #f5d0f8, #ffffff);
+  background-color: #4688f4;
+	//background-image: linear-gradient(to right top, #f00000, #ff507b, #ff95cd, #f5d0f8, #ffffff);
 }
 
 #bc4.btn-color {
-	background-image: linear-gradient(to bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff);
+  background-color: #da483b;
+	//background-image: linear-gradient(to bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff);
 }

@@ -4,6 +4,7 @@ class CreatePapers < ActiveRecord::Migration[5.2]
       t.text :title
       t.text :description
       t.string :field
+      t.string :color
       t.references :user, foreign_key: true
 
       t.timestamps

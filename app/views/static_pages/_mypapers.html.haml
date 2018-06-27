@@ -8,7 +8,7 @@
           - @papers.each do |p|
             .col-xs-4.col-sm-4.col-md-4.col-lg-4
               #recentCard.card.card-cascade-narrower
-                .view.view-cascade.gradient-card-header
+                .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
                   %h2.card-header.title
                     = p.title
                   %h3= p.user.fullname
@@ -24,7 +24,7 @@
                   = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
                 .row
                   #cardFooter.card-footer
-                    Topics
+                    =p.field
       .col-xs-2.col-sm-2.col-md-2.col-lg-2
         = link_to new_user_paper_path(current_user.id), class: "btn btn-info btn-new-paper" do
           %i.fas.fa-plus

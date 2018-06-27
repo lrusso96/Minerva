@@ -45,37 +45,9 @@ function getFields(){
 function setHeaderColor(){
 	$('document').ready(function(){
 		var view_elem = document.getElementById('paper-preview').getElementsByClassName('view')[0];
-		
-		$('#bc1').on('click', function(){
-			view_elem.style.backgroundImage = 'linear-gradient(to right bottom, #4a09c6, #7955da, #a58eea, #d0c6f7, #ffffff)';
-			document.getElementById('bc1').style.border = '1.5px solid #000000';
-			document.getElementById('bc2').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc3').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc4').style.border = '1.5px solid #ffffff';
-		});
-
-		$('#bc2').on('click', function(){
-			view_elem.style.backgroundImage = 'radial-gradient(circle, #f67320, #ff8687, #ffafd2, #fbdbfa, #ffffff)';
-			document.getElementById('bc1').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc2').style.border = '1.5px solid #000000';
-			document.getElementById('bc3').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc4').style.border = '1.5px solid #ffffff';
-		});
-
-		$('#bc3').on('click', function(){
-			view_elem.style.backgroundImage = 'linear-gradient(to right top, #f00000, #ff507b, #ff95cd, #f5d0f8, #ffffff)';
-			document.getElementById('bc1').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc2').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc3').style.border = '1.5px solid #000000';
-			document.getElementById('bc4').style.border = '1.5px solid #ffffff';
-		});
-
-		$('#bc4').on('click', function(){
-			view_elem.style.backgroundImage = 'linear-gradient(to bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff)';
-			document.getElementById('bc1').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc2').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc3').style.border = '1.5px solid #ffffff';
-			document.getElementById('bc4').style.border = '1.5px solid #000000';
-		});
-	});
+		$('.materialbc').click(function(e){
+  			view_elem.style.backgroundColor = $(this).css('backgroundColor');
+        document.getElementById("hiddenId").value = $(this).css('backgroundColor');
+      });
+    });
 }
