@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the README of Minerva project
 
-Things you may want to cover:
+* Ruby version require
 
-* Ruby version
+    Ruby 2+
 
-* System dependencies
+* Testing OS
 
-* Configuration
+    Windows, Ubuntu 18
 
 * Database creation
 
+    rails db:migrate
+
 * Database initialization
+
+    rails db:seed
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  cucumber
