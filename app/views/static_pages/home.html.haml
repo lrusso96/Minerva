@@ -11,10 +11,16 @@
         $('#home-container').html("#{j render(:partial => 'static_pages/myfeed')}");
       }
       else if(elem == 'MarkLink'){
-        $('#home-container').html('papermark section');
+        $('#home-container').html("#{j render(:partial => 'static_pages/papermark')}");
       }
       else if(elem == 'CollectionLink'){
         $('#home-container').html('collection section');
+      }
+      else if(elem == 'FollowersLink'){
+        $('#home-container').html('followers section');
+      }
+      else if(elem == 'FollowingLink'){
+        $('#home-container').html('following section');
       }
   }
 
@@ -45,6 +51,15 @@
           %a{:href => '#'}
             %i.fas.fa-box-open
             Collection
+        %li#FollowersLink
+          %a{:href => '#'}
+            %i.fas.fa-users
+            Followers
+        %li#FollowingLink
+          %a{:href => '#'}
+            %i.fas.fa-user-plus
+            Following
+
     #content
       %nav.navbar.navbar-expand-lg.navbar-light
         .container-fluid
