@@ -1,6 +1,6 @@
 .container
   -unless @found_papers.nil?
-    %h2 Search results
+    %h2 Search results (outside)
     %ul
       - @found_papers.each do |p|
         %li
@@ -11,6 +11,17 @@
           %span= "Publication date: " + p.published
           %br
           = link_to "Read here", p.link.full
+
+    %h2 Result inside Minerva
+    %ul
+      - @matching_papers.each do |p|
+        %li
+          %h3= link_to p.title, user_paper_path(user_id: p.user.id, id:p.id) 
+          %span= p.description
+          %br
+          %br
+          %span= "Publication date: " + p.created_at.strftime('%B %d, %Y')
+
   %h1 Top papers
   %ul
     - @top_papers.each do |p|
