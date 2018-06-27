@@ -3,21 +3,22 @@
     .col-xs-10.col-sm-10.col-md-10.col-lg-10
       %h1.head My feeds
       %hr.my-4
-      .row
-        - @feed_papers.each do |p|
-          .col-xs-4.col-sm-4.col-md-4.col-lg-4
-            #recentCard.card.card-cascade-narrower
-              .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
-                %h2.card-header.title
-                  = shorten_title p
-                %h3= link_to p.user.fullname, user_path(p.user.id, p.id), class: "author_link"
-                %h5
-                  %i.far.fa-calendar-alt
-                  %span= upload_day_of p
-              %p.card-text
-                = shorten_abstract p
-              .row
-                = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
-              .row
-                #cardFooter.card-footer
-                  =p.field
+      - unless @feed_papers.nil?
+        .row
+          - @feed_papers.each do |p|
+            .col-xs-4.col-sm-4.col-md-4.col-lg-4
+              #recentCard.card.card-cascade-narrower
+                .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
+                  %h2.card-header.title
+                    = shorten_title p
+                  %h3= link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+                  %h5
+                    %i.far.fa-calendar-alt
+                    %span= upload_day_of p
+                %p.card-text
+                  = shorten_abstract p
+                .row
+                  = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                .row
+                  #cardFooter.card-footer
+                    =p.field

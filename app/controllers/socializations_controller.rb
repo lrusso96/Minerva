@@ -26,10 +26,10 @@ class SocializationsController < ApplicationController
 
   def load_socializable
     session[:return_to] ||= request.referrer
-    if id = params[:paper_id] # Must be before :item_id, since it's nested under it.
-      @socializable = Paper.find(id)
-    else
-      @socializable = User.find_by_id(params[:user_id])
-    end
+    @socializable = if params[:paper_id]
+                      Paper.find(params[:paper_id])
+                    else
+                      User.find_by_id(params[:user_id])
+                    end
   end
 end

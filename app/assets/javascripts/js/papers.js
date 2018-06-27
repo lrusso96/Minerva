@@ -48,6 +48,8 @@ function setHeaderColor(){
 		$('.materialbc').click(function(e){
   			view_elem.style.backgroundColor = $(this).css('backgroundColor');
         document.getElementById("hiddenId").value = $(this).css('backgroundColor');
+        $('.materialbc').css('border', '1.5px solid #ffffff');
+        $(this).css('border', '1.5px solid #000000');
       });
     });
 }

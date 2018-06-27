@@ -28,12 +28,20 @@ User.create!(name:  'Primo',
 end
 
 # Papers
-users = User.order(:created_at).take(2)
+users = User.order(:created_at).take(3)
+colors = ['31, 164, 99', '255, 208, 75', '218, 72, 59', '70, 136, 244']
 2.times do
   users.each do |user|
     title = Faker::Lorem.sentence(5, false, 10)
     description = Faker::Lorem.sentences.join(' ')
-    user.papers.create!(description: description, title: title)
+    color = "rgb(#{colors.sample})"
+    user.papers.create!(description: description, title: title, color: color)
     user.papers.last.article.attach(io: File.open(File.join(Rails.root, 'db/files/FakePaper.pdf')), filename: 'FakePaper.pdf')
   end
 end
+
+fu = users.first
+lu = users.last
+
+fu.follow!(lu)
+fu.like!(lu.papers.first)

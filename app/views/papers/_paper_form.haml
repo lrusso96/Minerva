@@ -26,7 +26,6 @@
         %br
         = f.file_field :article, class:"filefield_new"
 
-
       .row
         %a#bc1.materialbc
         %a#bc2.materialbc
@@ -34,5 +33,5 @@
         %a#bc4.materialbc
 
       .actions
-        = f.hidden_field :color, id:'hiddenId'
+        = f.hidden_field :color, id:'hiddenId', value: 'rgb(31, 164, 99)'
         = f.submit "Create paper", class:"btn btn-green", id:"btn-new"

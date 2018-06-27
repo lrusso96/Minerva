@@ -38,7 +38,7 @@
   position: relative;
   width: 100%;
   height: 800px;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 #slides.carousel{
@@ -209,7 +209,6 @@ h3.display-4{
 }
 
 .card i{
-  margin-top: 40px;
   font-size: 4em;
   color: #00cc44;
 }
@@ -232,7 +231,7 @@ h3.display-4{
 
 #services-read.card:hover, #services-learn.card:hover,
 #services-share.card:hover{
-  
+
   background-color: #334d4d;
 
   h3, p, i{
