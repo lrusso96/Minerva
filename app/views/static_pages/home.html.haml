@@ -5,22 +5,22 @@
 
   function updateView(elem){
       if(elem == 'RecentLink'){
-        $('#home-container').html("#{j render(:partial => 'static_pages/mypapers')}");
+        $('#home-container').html("#{j render(partial: 'static_pages/mypapers')}");
       }
       else if(elem == 'FeedLink'){
-        $('#home-container').html("#{j render(:partial => 'static_pages/myfeed')}");
+        $('#home-container').html("#{j render(partial: 'static_pages/myfeed')}");
       }
       else if(elem == 'MarkLink'){
-        $('#home-container').html("#{j render(:partial => 'static_pages/papermark')}");
+        $('#home-container').html("#{j render(partial: 'static_pages/papermark')}");
       }
       else if(elem == 'CollectionLink'){
         $('#home-container').html('collection section');
       }
       else if(elem == 'FollowersLink'){
-        $('#home-container').html("#{j render(:partial => 'static_pages/followers')}");
+        $('#home-container').html("#{j render(partial: 'static_pages/followers')}");
       }
       else if(elem == 'FollowingLink'){
-        $('#home-container').html('following section');
+        $('#home-container').html("#{j render(partial: 'static_pages/following')}");
       }
   }
 

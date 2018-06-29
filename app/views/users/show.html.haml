@@ -15,27 +15,6 @@
     = "You signed in #{@user.sign_in_count} times (last time was #{time_ago_in_words(@user.last_sign_in_at)} ago)"
     %br
     = "You have uploaded #{@user.papers.size} papers"
-    %h3 Followers
-    %ul.followers
-      - @followers.each do |follower|
-        %li
-          = gravatar_for follower, size: 20
-          = link_to follower.fullname, follower
-
-    %h3 Starred papers
-    %ul.starred_papers
-      - @starred_papers.each do |starred_paper|
-        %li
-          = link_to starred_paper.title, user_paper_path(starred_paper.user.id, starred_paper.id)
-          = link_to('Unstar it', user_paper_unstar_path(paper_id: starred_paper.id, user_id: current_user.id), method: :post)
-
-    %h3 Following
-    %ul.followees
-      - @followees.each do |followee|
-        %li
-          = gravatar_for followee, size: 20
-          = link_to followee.fullname, followee
-          = link_to('Unfollow', user_unfollow_path(followee), method: :post)
 
 -else
   .container

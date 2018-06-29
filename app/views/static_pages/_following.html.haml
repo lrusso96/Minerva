@@ -1,0 +1,20 @@
+.container-fluid
+	.row
+		.col-xs-10.col-sm-10.col-md-10.col-lg-10
+			%h1	Followees
+			%hr.my-4
+			- unless @followees.nil?
+				#followerContainer
+					%table#followerTable
+						%tbody
+						- @followees.each do |followee|
+							%tr
+								%td.align-middle
+									= gravatar_for followee, size: 60
+								%td.align-middle
+									= link_to followee.fullname, followee, class: "followerName"
+								%td.align-middle
+									-if followee.followed_by?(current_user)
+										= link_to('Unfollow', user_unfollow_path(followee), method: :post, class: "btn btn-primary btn-follower")
+									-else
+										= link_to('Follow', user_follow_path(followee), method: :post, class: "btn btn-primary btn-follower")
