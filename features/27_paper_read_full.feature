@@ -7,4 +7,5 @@ Scenario: successfull reading
 Given I am a registered user
 When I log in
 And I upload a paper
-Then I should see "Read article"
+When I follow "Read more"
+Then I should see "Read full article"

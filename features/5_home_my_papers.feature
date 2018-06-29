@@ -6,5 +6,7 @@ so that I can SEE MY PAPERS
 Scenario: basic
 Given I am a registered user
 When I log in
-Then I should be on homepage
-And I should see "My recent papers"
+And I upload a paper
+Given I om on homepage
+Then I should see "My recent papers"
+And I should see "Random title"

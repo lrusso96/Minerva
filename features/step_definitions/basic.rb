@@ -257,15 +257,19 @@ When(/^I log in$/) do
   )
 end
 
+When(/^(?:|I )click by class "([^"]*)"$/) do |btn_class|
+  find(btn_class).click
+end
+
 When(/^I upload a paper$/) do
   steps %(
     Given I am on homepage
-    When I follow "New paper"
+    When I click by class ".btn-new-paper"
     Then I should be on upload paper page
     When I fill in "Title" with "Random title"
     And I fill in "Description" with "random Description"
     And I attach a paper
-    And I press "Create Paper"
+    And I press "Create paper"
     Then I should be on homepage
   )
 end
@@ -291,12 +295,12 @@ end
 When(/^He uploads a paper$/) do
   steps %(
     Given I am on homepage
-    When I follow "New paper"
+    When I click by class "btn-new-paper"
     Then I should be on upload paper page
     When I fill in "Title" with "Nice paper"
     And I fill in "Description" with "definitely not a description"
     And I attach a paper
-    And I press "Create Paper"
+    And I press "Create paper"
     Then I should be on homepage
   )
 end

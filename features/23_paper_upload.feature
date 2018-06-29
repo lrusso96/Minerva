@@ -13,9 +13,9 @@ Scenario: unsuccessfull upload without file
 Given I am a registered user
 When I log in
 Then I should be on homepage
-When I follow "New paper"
+When I click by class ".btn-new-paper"
 Then I should be on upload paper page
 When I fill in "Title" with "Random title"
 And I fill in "Description" with "random Description"
-And I press "Create Paper"
+And I press "Create paper"
 Then I should not see "Random title"
