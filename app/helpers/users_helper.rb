@@ -17,4 +17,8 @@ module UsersHelper
   def registration_day_of(user)
     user.created_at.strftime('%B %d, %Y')
   end
+
+  def following(follower)
+    @followees.include?(follower)
+  end
 end

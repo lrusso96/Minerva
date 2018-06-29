@@ -5,6 +5,8 @@ class StaticPagesController < ApplicationController
     followees = current_user.followees(User)
     @feed_papers = Paper.where(user_id: followees.map(&:id)).last(5).reverse
     @starred_papers = current_user.likees(Paper).last(5).reverse
+    @followers = current_user.followers(User).reverse
+    @followees = current_user.followees(User).last(5).reverse
   end
 
   def help

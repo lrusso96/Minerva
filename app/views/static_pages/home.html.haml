@@ -17,7 +17,7 @@
         $('#home-container').html('collection section');
       }
       else if(elem == 'FollowersLink'){
-        $('#home-container').html('followers section');
+        $('#home-container').html("#{j render(:partial => 'static_pages/followers')}");
       }
       else if(elem == 'FollowingLink'){
         $('#home-container').html('following section');
