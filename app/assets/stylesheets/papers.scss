@@ -396,3 +396,19 @@
   background-color: #da483b;
 	//background-image: linear-gradient(to bottom, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff);
 }
+
+#noFeeds {
+	text-align: center;
+	transform: translateY(50%);
+	padding-top: 90px;
+	& > .row > [class^='col-'] > i {
+		font-size: 12em;
+		color: #dddddd;
+		margin-bottom: 10px;
+	}
+	& > .row > [class^='col-'] > span {
+		font-size: 20px;
+		margin: 15px auto 15px auto;
+		color: #dddddd;
+	}
+}

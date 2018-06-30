@@ -1,0 +1,40 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="md-form", id="email_field">
+    <i class="fa fa-envelope prefix grey-text"></i>
+    <%# <%= f.label :email <br /> %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", id: "md_email"%>
+  </div>
+
+  <div class="md-form", id="psw_field">
+    <%# <%= f.label :password <br /> %>
+    <i class="fas fa-key grey-text"></i>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "md_psw" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="md-form">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <%= f.check_box :remember_me , id: "check_box" %>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <%= f.label :remember_me , id: "checkbox_field" %>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name), id: "forgot_psw_field" %><br />
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <div class="row">
+      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"></div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <%= f.submit "Log in", class: "btn btn-green", id: "btn-login" %>
+      </div>
+    </div>
+  </div>
+<% end %>
