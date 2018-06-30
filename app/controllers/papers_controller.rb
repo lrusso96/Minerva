@@ -3,8 +3,8 @@ class PapersController < ApplicationController
 
   def index
     @user = User.find_by_id(params[:user_id])
-    redirect_to root_url if @user.nil?
     @papers = @user.papers.paginate(page: params[:page])
+    authorize! :show, @papers
   end
 
   def show
@@ -12,6 +12,7 @@ class PapersController < ApplicationController
     redirect_to root_url if @user.nil?
     @paper = @user.papers.find_by_id(params[:id])
     redirect_to root_url if @paper.nil?
+    authorize! :show, @paper
   end
 
   def new
@@ -21,13 +22,12 @@ class PapersController < ApplicationController
       return
     end
     @paper = Paper.new
-    # must re-authorize resource!
-    # authorize! :create, @paper
+    @paper.user_id = @user.id
+    authorize! :create, @paper
   end
 
   def create
     @paper = current_user.papers.build(paper_params)
-    @paper.user_id = current_user.id
     art = params[:paper][:article]
     if art.nil?
       flash[:error] = 'Attach a file please!'
@@ -45,13 +45,16 @@ class PapersController < ApplicationController
   end
 
   def destroy
-    Paper.find_by_id(params[:id]).destroy
+    paper = Paper.find_by_id(params[:id])
+    authorize! :destroy, paper
+    paper.destroy
     redirect_to root_url
   end
 
   private
 
   def paper_params
-    params.require(:paper).permit(:title, :description, :article, :field, :color)
+    params.require(:paper).permit(:title, :description, :article, :field,
+                                  :color)
   end
 end
