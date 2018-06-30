@@ -12,7 +12,7 @@ Then I should be on settings page
 When I press "Cancel my account"
 Then I should be on homepage
 Given I am on log in page
-When I fill in "Email" with "cocomero@email.com"
+When I fill in "Email address" with "cocomero@email.com"
 And I fill in "Password" with "foobar"
 And I press "Log in"
 Then I should not see "Log out"

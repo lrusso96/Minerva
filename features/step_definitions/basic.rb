@@ -273,7 +273,7 @@ end
 When(/^I log in$/) do
   steps %(
     Given I am on log in page
-    When I fill in "Email" with "cocomero@email.com"
+    When I fill in "Email address" with "cocomero@email.com"
     And I fill in "Password" with "foobar"
     And I press "Log in"
   )
@@ -308,7 +308,7 @@ end
 When(/^He logs in$/) do
   steps %(
     Given I am on log in page
-    When I fill in "Email" with "cocomero2@email.com"
+    When I fill in "Email address" with "cocomero2@email.com"
     And I fill in "Password" with "foobar"
     And I press "Log in"
   )

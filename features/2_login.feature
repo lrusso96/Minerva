@@ -10,7 +10,7 @@ Then I should not see "Log out"
 Scenario: Unsuccesfull log in due to wrong password
 Given I am a registered user
 And I am on log in page
-When I fill in "Email" with "cocomero@email.com"
+When I fill in "Email address" with "cocomero@email.com"
 And I fill in "Password" with "foobar_wrong"
 And I press "Log in"
 Then I should be on log in page

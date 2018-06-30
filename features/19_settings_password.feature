@@ -16,12 +16,12 @@ And I press "Update"
 Then I should be on homepage
 When I follow "Log out"
 Given I am on log in page
-When I fill in "Email" with "cocomero@email.com"
+When I fill in "Email address" with "cocomero@email.com"
 And I fill in "Password" with "foobar"
 And I press "Log in"
 Then I should be on log in page
 And I should not see "Log out"
-When I fill in "Email" with "cocomero@email.com"
+When I fill in "Email address" with "cocomero@email.com"
 And I fill in "Password" with "nuova_password"
 And I press "Log in"
 Then I should see "Log out"
@@ -38,7 +38,7 @@ And I fill in "Current password" with "wrong_password"
 And I press "Update"
 When I follow "Log out"
 Given I am on log in page
-When I fill in "Email" with "cocomero@email.com"
+When I fill in "Email address" with "cocomero@email.com"
 And I fill in "Password" with "foobar"
 And I press "Log in"
 Then I should see "Log out"
