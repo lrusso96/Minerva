@@ -5,6 +5,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support',
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support',
                                    'selectors'))
 
+
 module WithinHelpers
   def with_scope(locator)
     locator ? within(*selector_for(locator)) { yield } : yield
@@ -88,7 +89,28 @@ When(/^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/) do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
+Then(/^(?:|I )should see-js "([^"]*)"$/) do |text|
+  Capybara.ignore_hidden_elements = false
+  if page.respond_to? :should
+    expect(page).to have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+  Capybara.ignore_hidden_elements = true
+end
+
+Then(/^(?:|I )should not see-js "([^"]*)"$/) do |text|
+  Capybara.ignore_hidden_elements = false
+  if page.respond_to? :should
+    expect(page).to have_no_content(text)
+  else
+    assert page.has_no_content?(text)
+  end
+  Capybara.ignore_hidden_elements = true
+end
+
 Then(/^(?:|I )should see "([^"]*)"$/) do |text|
+  Capybara.ignore_hidden_elements = false
   if page.respond_to? :should
     expect(page).to have_content(text)
   else
@@ -98,7 +120,6 @@ end
 
 Then %r{/^(?:|I )should see \/([^\/]*)\/$/} do |regexp|
   regexp = Regexp.new(regexp)
-
   if page.respond_to? :should
     expect(page).to have_xpath('//*', text: regexp)
   else
@@ -112,6 +133,7 @@ Then(/^(?:|I )should not see "([^"]*)"$/) do |text|
   else
     assert page.has_no_content?(text)
   end
+
 end
 
 Then %r{/^(?:|I )should not see \/([^\/]*)\/$/} do |regexp|
@@ -292,10 +314,25 @@ When(/^He logs in$/) do
   )
 end
 
+When(/^He logs out$/) do
+  steps %(
+    Given I am on homepage
+    When I follow "Log out"
+  )
+end
+
+When(/^He follows me$/) do
+  steps %(
+    Given I am on users page
+    When I follow "Cocomero Registrato"
+    And I follow "Follow"
+  )
+end
+
 When(/^He uploads a paper$/) do
   steps %(
     Given I am on homepage
-    When I click by class "btn-new-paper"
+    When I click by class ".btn-new-paper"
     Then I should be on upload paper page
     When I fill in "Title" with "Nice paper"
     And I fill in "Description" with "definitely not a description"

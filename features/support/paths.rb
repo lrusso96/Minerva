@@ -10,6 +10,7 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
+
   def path_to(page_name)
     case page_name
 
@@ -27,7 +28,10 @@ module NavigationHelpers
       '/users/edit'
     when /^upload paper/
       '/users/1/papers/new'
-
+    when /^users page/
+      '/users/'
+    when /^simple paper page/
+      '/users/1/papers/1'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
