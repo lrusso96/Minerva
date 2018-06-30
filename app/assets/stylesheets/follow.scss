@@ -39,7 +39,7 @@
 
 .followerName {
 	font-size: 20px;
-	text-decoration: none;
+	text-decoration: none !important;
 	&:hover {
 		color: #0000b3;
 	}

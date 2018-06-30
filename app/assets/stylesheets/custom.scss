@@ -165,12 +165,13 @@ footer h5{
 
 .btn.btn-green{
   margin: 10px 0px 10px 6px;
-  background-color: #00cc44;
+  background-color: #00cc44 !important;
+  text-transform: none;
   color: white;
   font-weight: bold;
   &:hover{
     color: white;
-    background-color: #00b33c;
+    background-color: #00b33c !important;
   }
 }
 
@@ -190,3 +191,70 @@ footer h5{
   }
 }
 
+
+#email_field, #psw_field {
+  margin-left: 10px;
+  margin-right: 10px !important;
+  & > i {
+    font-size: 2rem;
+  }
+}
+
+#remember_me_field {
+  margin-left: 10px;
+}
+
+#md_email, #md_psw {
+  width: 50%;
+}
+
+#check_box {
+  margin-left: 140px;
+}
+
+#checkbox_field {
+  margin-left: -55px;
+
+}
+
+#forgot_psw_field {
+  text-decoration: none;
+  margin-left: -250px;
+}
+
+#btn-login {
+  margin: 15px auto 15px auto;
+  float: left;
+}
+
+#loginCard {
+  margin: 140px auto 140px auto;
+  border-radius: 10px;
+  width: 50%;
+
+  & > h2 {
+    padding-top: 20px;
+  }
+}
+
+#resetPswCard {
+  margin: 140px auto 140px auto;
+  border-radius: 10px;
+  border: 1px solid #dddddd;
+  width: 50%;
+
+  & > h2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    margin-left: 10px;
+  }
+}
+
+#contact {
+  margin: 75px auto 75px auto;
+}
+
+#btn-send {
+  margin-left: -15px;
+}

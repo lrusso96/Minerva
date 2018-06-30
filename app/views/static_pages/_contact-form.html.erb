@@ -1,0 +1,29 @@
+<%= form_for(resource, as: resource_name, url: '#') do |f| %>
+
+  <div class="md-form form-sm">
+    <i class="fas fa-envelope prefix"></i>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", id: "md_email"%>
+  </div>
+
+  <div class="md-form form-sm">
+    <i class="fa fa-tag prefix"></i>
+    <%= f.text_field :name, autofocus: true, autocomplete: "on", placeholder: "Topic area", id: "md_email"%>
+  </div>
+
+  <div class="md-form form-sm">
+    <i class="fas fa-pencil-alt prefix"></i>
+    <%= f.text_area :name, autofocus:true, autocomplete:"on", class:"textarea_new", rows: '10', cols: '35', maxlength: '510',minlength: '10', placeholder: "Insert here the message." %>
+  </div>
+
+
+  <div class="actions">
+    <div class="row">
+      <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11"></div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <%= button_tag(class: "btn btn-green", id: "btn-send") do %>
+            <i class="fas fa-paper-plane"></i> Send
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
