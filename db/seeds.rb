@@ -6,12 +6,13 @@
 #  movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #  Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name:  'Primo',
-             surname: 'Registrato',
-             email: 'example@email.com',
-             birthdate: Time.now.to_date - 20.year,
-             password: 'foobar',
-             password_confirmation: 'foobar')
+admin = User.create!(name:  'Primo',
+                     surname: 'Registrato',
+                     email: 'example@email.com',
+                     birthdate: Time.now.to_date - 20.year,
+                     password: 'foobar',
+                     password_confirmation: 'foobar')
+admin.update_attribute :admin, true
 
 9.times do |n|
   name = Faker::Name.first_name

@@ -35,6 +35,11 @@ textarea {
   }
 }
 
+.alert-alert{
+  @extend .alert-warning;
+  margin-bottom: 0px !important;
+}
+
 
 /* typography */
 

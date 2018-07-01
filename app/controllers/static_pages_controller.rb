@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    return unless user_signed_in?
     @papers = current_user.papers.last(5).reverse
     authorize! :show, @papers
     followees = current_user.followees(User)
@@ -20,10 +21,13 @@ class StaticPagesController < ApplicationController
 
   def explore
     query = params[:query]
-    @found_papers = MinervaApi::Arxiv.search(query) if query
+    if query
+      @found_papers = MinervaApi::Arxiv.search(query)
+      authorize! :show, @found_papers
+    end
     @top_papers = Paper.order(:likers_count).last(5).reverse
     @recent_papers = Paper.order(:created_at).last(5).reverse
-    @matching_papers = Paper.where('description LIKE ? OR title LIKE ?', "%#{query}%", "%#{query}%")
+    @matching_papers = Paper.where('description LIKE ? OR title LIKE ?',
+                                   "%#{query}%", "%#{query}%")
   end
-
 end

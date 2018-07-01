@@ -24,6 +24,10 @@
       }
   }
 
+- flash.each do |message_type, message|
+  = content_tag(:div, sanitize(message), class: "alert-#{message_type} alert ")
+
+
 - if user_signed_in?
   .wrapper
     %nav#sidebar.active
