@@ -10,6 +10,8 @@ class Ability
       can :read, :all
       can :manage, Paper, user_id: user.id
       can :manage, User, id: user.id
+      can :manage, Issue, opener_id: user.id
+      can :manage, Issue, paper: { user_id: user.id }
     end
   end
 end

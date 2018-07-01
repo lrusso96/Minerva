@@ -1,0 +1,10 @@
+#paper_overview.container-fluid.left
+  %h1= @issue.title
+  %h3 Opened by
+  = link_to @opener.fullname, @opener
+  %h3 Description
+  = @issue.description
+
+  - if can? :destroy, @issue
+    %h3 Advanced settings
+    = button_to "Delete this issue", user_paper_issue_path(@issue), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-delete"

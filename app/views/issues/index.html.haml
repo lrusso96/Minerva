@@ -1,0 +1,10 @@
+%h1= "All opened issues of " + @paper.title
+.container
+  = will_paginate
+  %ul.issues
+    - @issues.each do |issue|
+      %li
+        %span= issue.title
+        %span= "(opened "+ opened_date_of(issue) + ")"
+        %span= link_to "See more", user_paper_issue_path(user_id: @user.id, paper_id: @paper.id, id: issue.id)
+  = will_paginate

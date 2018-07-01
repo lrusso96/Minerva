@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_01_065836) do
+ActiveRecord::Schema.define(version: 2018_07_01_084154) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 2018_07_01_065836) do
     t.datetime "created_at"
     t.index ["followable_id", "followable_type"], name: "fk_followables"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.integer "opener_id"
+    t.integer "paper_id"
+    t.boolean "closed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opener_id"], name: "index_issues_on_opener_id"
+    t.index ["paper_id", "created_at"], name: "index_issues_on_paper_id_and_created_at"
+    t.index ["paper_id"], name: "index_issues_on_paper_id"
   end
 
   create_table "likes", force: :cascade do |t|

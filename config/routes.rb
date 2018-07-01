@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :papers do
       post 'star',   to: 'socializations#star'
       post 'unstar', to: 'socializations#unstar'
+      resources :issues
     end
   end
 end
