@@ -84,29 +84,31 @@
 
   /* Image Slider && Form*/
   #intro.container-fluid
-    .col-xs-12.col-sm-12.col-md-12.col-lg-6.to-pad
-      #slides.carousel.slide{"data-ride" => 'carousel'}
-        %ol.carousel-indicators
-          %li{"data-target" => '#slides', "data-slide-to" => "0"}
-            .active
-          %li{"data-target" => '#slides', "data-slide-to" => "1"}
-          %li{"data-target" => '#slides', "data-slide-to" => "2"}
+    .row
+      .col-xs-12.col-sm-12.col-md-6.col-lg-6.to-pad
+        #slides.carousel.slide{"data-ride" => 'carousel'}
+          %ol.carousel-indicators
+            %li{"data-target" => '#slides', "data-slide-to" => "0"}
+              .active
+            %li{"data-target" => '#slides', "data-slide-to" => "1"}
+            %li{"data-target" => '#slides', "data-slide-to" => "2"}
 
-        .carousel-inner{:role => 'listbox'}
-          .item.active
-            = image_tag('background.png');
-            .carousel-caption
-              %h1.display-2 Bootstrap
-              %h3 Complete Website Layout
-              %button.btn.btn-outline-light.btn-lg{:type => "button"} View Demo
-              %button.btn.btn-primary.btn-lg{:type => "button"} Get Started
-          .item
-            = image_tag('background2.png');
-          .item
-            = image_tag('background3.png');
-    .col-xs-12.col-sm-12.col-md-12.col-lg-6
-      #form.card
-        =render 'users/registrations/form'
+          .carousel-inner{:role => 'listbox'}
+            .item.active
+              = image_tag('background.png');
+              .carousel-caption
+                %h1.display-2 Bootstrap
+                %h3 Complete Website Layout
+                %button.btn.btn-outline-light.btn-lg{:type => "button"} View Demo
+                %button.btn.btn-primary.btn-lg{:type => "button"} Get Started
+            .item
+              = image_tag('background2.png');
+            .item
+              = image_tag('background3.png');
+      .col-xs-12.col-sm-12.col-md-6.col-lg-6
+        //#form.card
+        #form
+          =render 'users/registrations/form'
   .slant
 
 
@@ -150,21 +152,20 @@
   .container-fluid.padding
     .row.text-center.padding
 
-      .col-xs-12.col-sm-6.col-md-4
-        //%i.fas.fa-code
+      .col-xs-12.col-sm-6.col-md-4.col-lg-4
         %i.far.fa-gem
         %h3 Ruby on Rails
-        %p Built with the latest version of Ruby on Rails.
+        %p.spacing Built with the latest version of Ruby on Rails.
 
-      .col-xs-12.col-sm-6.col-md-4
+      .col-xs-12.col-sm-6.col-md-4.col-lg-4
         %i.fas.fa-bold
         %h3 Bootstrap
-        %p Built with Bootstrap 3.
+        %p.spacing Built with Bootstrap 3.
 
-      .col-sm-12.col-md-4
+      .col-xs-12.col-sm-6.col-md-4.col-lg-4
         %i.fab.fa-css3
         %h3 CSS3
-        %p Built with the latest version of CSS, CSS3.
+        %p.spacing Built with the latest version of CSS, CSS3.
 
   %hr.my-4
 
@@ -175,7 +176,8 @@
       %h1.display-4 Meet the Team
       %hr
       .col-xs-12.col-sm-6.col-md-6.col-lg-6
-        %img.img-circle=image_tag('no_photo.jpg')
+        .img-circle
+          =image_tag('no_photo.jpg')
         %h4 Matteo Salvino
         %b Engineering Student
         %p Matteo is a student at University La Sapienza of Rome.
@@ -183,7 +185,8 @@
           %i.fab.fa-github
 
       .col-xs-12.col-sm-6.col-md-6.col-lg-6
-        %img.img-circle=image_tag('no_photo.jpg')
+        .img-circle
+          =image_tag('no_photo.jpg')
         %h4 Luigi Russo
         %b Engineering Student
         %p Luigi is a student at University La Sapienza of Rome.
@@ -193,12 +196,12 @@
   /* Our goal */
   .container-fluid.padding
     .row.padding
-      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12
         %h2.display-4 Our Goal
         %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.
         %br
-      .col-xs-6.col-sm-6.col-md-6.col-lg-6
-        %img.img-fluid=image_tag('missing-image.png')
+      //.col-xs-6.col-sm-6.col-md-6.col-lg-6
+      //  %img.img-fluid=image_tag('missing-image.png')
       %hr.my-4
 
   /* Connect */
