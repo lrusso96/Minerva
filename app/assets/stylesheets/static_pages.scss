@@ -489,3 +489,86 @@ hr.light{
   background-color: transparent;
   box-shadow: 0 0 0 0 #fff;
 }
+
+#help-container {
+  margin: 25px 0px 50px 0px;
+  padding-right: 0px;
+  & > h1 {
+    text-align: center;
+  }
+  & > h2 {
+    text-align: left;
+  }
+  & > p {
+    margin-left: 5px;
+  }
+}
+
+#settings-container {
+  margin: 75px auto 75px auto;
+}
+
+#settings-container > .row > [class^='col-'] > ul.nav.nav-pills {
+  & > li > a {
+    color: #707070;
+  }
+
+  & > li.active > a{
+    background: #000080;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  & > li > a:hover {
+    background: #0000b3;
+    color: #fff !important;
+  }
+}
+
+
+#settings-container > .row > [class^='col-'] > .tab-content {
+  border: 1px solid #dddddd;
+  margin: 10px 0px 10px 0px;
+}
+
+#profile-container, #password-container, #account-container {
+  margin: 10px 0px 10px 0px;
+}
+
+#profile-container > .field > select {
+  border-radius: 20px;
+  padding: 2px;
+}
+
+#password-container > .actions >.btn.btn-primary.btn-update {
+  background: #000080 !important;
+  box-shadow: 0 0 0 0 transparent;
+  border-radius: 5px;
+  text-transform: none;
+  margin-top: 10px;
+  
+  &:hover {
+    background: #fff !important;
+    color: #000080 !important;
+    border: 1px solid #000080 !important;
+  }
+}
+
+#account-container > .field > p {
+  font-weight: bold;
+}
+
+#account-container > .field > .btn.btn-primary.btn-delete {
+  background: #ff0000 !important;
+  text-transform: none;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 0px;
+  &:hover {
+    background: #cc0000 !important;
+  }
+}
+
+#account-container > .field > p {
+  margin-bottom: 0px;
+}

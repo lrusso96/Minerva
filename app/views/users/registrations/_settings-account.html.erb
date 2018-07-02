@@ -1,0 +1,10 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="container-fluid" id="account-container">
+ 		<div class="field">
+      <p>Cancel my account </p>
+      <br />
+			<%= button_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-delete" %>
+		</div>
+	</div>
+<% end %>

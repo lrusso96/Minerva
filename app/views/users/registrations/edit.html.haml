@@ -1,0 +1,28 @@
+#settings-container.container-fluid
+	.row
+		.col-xs-10.col-sm-10.col-md-10.col-lg-10
+			%ul.nav.nav-pills
+				%li.active
+					%a{:href => '#profile-content', "data-toggle" =>"tab"}
+						%i.fas.fa-user-edit
+						Profile
+				%li
+					%a{:href => '#password-content', "data-toggle" =>"tab"}	
+						%i.fas.fa-lock
+						Password
+				%li
+					%a{:href => '#account-content', "data-toggle" =>"tab"}
+						%i.fas.fa-user-cog
+						Account
+
+			.tab-content.clearfix
+				#profile-content.tab-pane.active
+					= render 'settings-profile'
+
+				#password-content.tab-pane
+					= render 'settings-password'
+
+				#account-content.tab-pane
+					= render 'settings-account'
+
+
