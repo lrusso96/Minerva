@@ -1,6 +1,6 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="md-form", id="email_field">
-    <i class="fa fa-envelope prefix grey-text"></i>
+    <i class="fa fa-envelope grey-text"></i>
     <%# <%= f.label :email <br /> %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", id: "md_email"%>
   </div>
