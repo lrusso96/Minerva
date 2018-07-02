@@ -261,6 +261,33 @@ Then(/^show me the page$/) do
   save_and_open_page
 end
 
+# by class or id
+When(/^(?:|I )click the "([^"]*)"$/) do |btn_stuff|
+  find(btn_stuff).click
+end
+
+# CUSTOM
+
+When(/^I open sidebar$/) do
+  steps %(
+    When I click the "#sidebarCollapse"
+  )
+end
+
+When(/^I click new paper button$/) do
+  steps %(
+    When I click the ".btn-new-paper"
+  )
+end
+
+When(/^I log out|He logs out$/) do
+  steps %(
+    Given I am on homepage
+    When I click the ".btn-toggle-head"
+    And I follow "Log out"
+  )
+end
+
 Given(/^I am a registered user$/) do
   User.create!(name:  'Cocomero',
                surname: 'Registrato',
@@ -279,14 +306,10 @@ When(/^I log in$/) do
   )
 end
 
-When(/^(?:|I )click by class "([^"]*)"$/) do |btn_class|
-  find(btn_class).click
-end
-
 When(/^I upload a paper$/) do
   steps %(
     Given I am on homepage
-    When I click by class ".btn-new-paper"
+    When I click new paper button
     Then I should be on upload paper page
     When I fill in "Title" with "Random title"
     And I fill in "Description" with "random Description"
@@ -314,13 +337,6 @@ When(/^He logs in$/) do
   )
 end
 
-When(/^He logs out$/) do
-  steps %(
-    Given I am on homepage
-    When I follow "Log out"
-  )
-end
-
 When(/^He follows me$/) do
   steps %(
     Given I am on users page
@@ -332,7 +348,7 @@ end
 When(/^He uploads a paper$/) do
   steps %(
     Given I am on homepage
-    When I click by class ".btn-new-paper"
+    When I click new paper button
     Then I should be on upload paper page
     When I fill in "Title" with "Nice paper"
     And I fill in "Description" with "definitely not a description"

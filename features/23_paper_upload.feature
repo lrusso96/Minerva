@@ -13,7 +13,7 @@ Scenario: unsuccessfull upload without file
 Given I am a registered user
 When I log in
 Then I should be on homepage
-When I click by class ".btn-new-paper"
+When I click new paper button
 Then I should be on upload paper page
 When I fill in "Title" with "Random title"
 And I fill in "Description" with "random Description"

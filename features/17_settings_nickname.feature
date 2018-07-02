@@ -10,8 +10,7 @@ Then I should be on homepage
 When I follow "Settings"
 Then I should be on settings page
 When I fill in "Nickname" with "nuovo_nick"
-And I fill in "Current password" with "foobar"
-And I press "Update"
+And I press "Save changes"
 Then I should be on homepage
 When I follow "Profile"
 Then I should see "@nuovo_nick"
