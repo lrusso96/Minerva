@@ -92,51 +92,6 @@
 	margin : 20px auto 20px auto;
 }
 
-#paper_overview {
-	h1 {
-		text-align: left;
-		margin: 20px 0px 20px 0px;
-	}
-
-	.btn-star{
-		color: #fff;
-		text-size: 10px;
-	}
-
-	.authors{
-		font-size: 15px;
-		&:hover{
-			color: #1c4263;
-			text-decoration: none;
-		}
-	}
-
-	p{
-		text-size: 15px;
-	}
-
-	.btn-read{
-		border: 1px solid #997300;
-		background : #e6ac00;
-		color: #fff;
-		&:hover{
-			color: #e6ac00;
-			background: white;
-		}
-	}
-
-	.btn-danger.btn-delete{
-		border: 1px solid #4d1a00;
-		background: #b33c00;
-		margin-bottom : 20px;
-		color: #fff;
-
-		&:hover{
-			background:#802b00;
-		}
-	}
-}
-
 
 .testimonial-group {
 	margin-bottom: 50px;
@@ -252,24 +207,26 @@
 	margin-right: 10px;
 }
 
-#recentCard > .row > .col-md-6 > .btn-read-more {
+#recentCard > .row > [class^='col'] > .btn-read-more {
 	background-color: transparent !important;
 	color: #00b33c !important;
 	border: 1px solid transparent !important;
 	box-shadow: 0 0 0 0 transparent !important;
 	right: 0;
 	margin-right: 10px;
+	margin-top: 18px;
 }
 
-#recentCard > .row > .col-md-6 > .btn-star {
+#recentCard > .row > [class^='col'] > .btn-star {
 	background-color: transparent !important;
 	color: #00b33c !important;
 	box-shadow: 0 0 0 0 transparent !important;
+	border: 1px solid transparent;
 	left: 0;
 	margin-left: 10px;
 
 	& > i {
-		font-size: 2rem;
+		font-size: 1.5em;
 	}
 }
 

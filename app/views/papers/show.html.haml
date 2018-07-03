@@ -1,17 +1,39 @@
-#paper_overview.container-fluid.left
-  %h1= @paper.title
-  -if @paper.liked_by?(current_user)
-    = link_to('Unstar it', user_paper_unstar_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
-  -elsif current_user != @user
-    = link_to('Star paper', user_paper_star_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
-  %h3 Authors
-  = link_to @paper.user.fullname, @paper.user, class: "authors"
+#paper_overview.container-fluid
+  .row
+    .col-xs-1-col-sm-1.col-md-1.col-lg-1
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10
+      %h1
+        = @paper.title
+      %hr.my-4
 
-  %h3 Abstract
-  %p= @paper.description
-  %br
-  = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
+      -if @paper.liked_by?(current_user)
+        = link_to('Unstar it', user_paper_unstar_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
+      -elsif current_user != @user
+        = link_to('Star paper', user_paper_star_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
+      %h3 Author
+      = link_to @paper.user.fullname, @paper.user, class: "author"
+      %hr.light
 
-  - if can? :destroy, @paper
-    %h3 Advanced settings
-    = button_to "Delete this paper", user_paper_path(@paper), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-delete"
+      %h4 Abstract
+      %p
+        = @paper.description
+      %hr.light
+      .row
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          = link_to "Issues", user_paper_issues_path(paper_id: @paper.id, user_id: current_user.id), class: "btn btn-primary btn-issues"
+
+      - if can? :destroy, @paper
+        %h5 Advanced settings
+        = button_to "Delete this paper", user_paper_path(@paper), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-delete", id: "btnDelete"
+
+    .col-xs-1.col-sm-1.col-md-1.col-lg-1
+
+  
+  
+
+  
+  
+
+  

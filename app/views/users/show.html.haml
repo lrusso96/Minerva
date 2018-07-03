@@ -1,10 +1,26 @@
+#profile-container.container-fluid
+  .row
+    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+      .row
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          .img-circle
+            = gravatar_for @user, size: 150
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          %h2
+            = @user.fullname
+          %h4
+            = @user.formatted_nickname
+          -if @user.country?
+            = image_tag "country-4x3/#{@user.country.downcase}.svg", width: 32, alt: @user.country, style: "margin-left: 10px"
+    .col-xs-4.col-sm-4.col-md-4.col-lg-4
+      
+      
 %h1
   = gravatar_for @user
   = @user.fullname
 .center
   = @user.formatted_nickname
-  -if @user.country?
-    = image_tag "country-4x3/#{@user.country.downcase}.svg", width: 32, alt: @user.country, style: "margin-left: 10px"
+  
   %br
   %br
   = "member since " + registration_day_of(@user)

@@ -1,3 +1,192 @@
 // Place all the styles related to the issues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#paper_overview {
+	margin: 75px 0px 75px 0px;
+	text-align: center;
+	& > .row > [class^='col'] > h1,h3 {
+		margin: 20px 0px 20px 0px;
+	}
+
+	& > .row > [class^='col'] > a.author {
+		font-size: 15px;
+		&:hover{
+			color: #1c4263;
+			text-decoration: none;
+		}
+	}
+
+	p{
+		text-size: 15px;
+	}
+
+	& > .row > [class^='col'] > .row > [class^='col'] > .btn.btn-primary.btn-read {
+		border: 1px solid #997300 !important;
+		background : #e6ac00 !important;
+		color: #fff;
+		border-radius: 5px;
+		text-transform: none;
+		margin-bottom: 20px;
+		&:hover{
+			color: #e6ac00 !important;
+			background: white !important;
+			border: 1px solid #e6ac00;
+		}
+	}
+	
+	& > .row > [class^='col'] > .row > [class^='col'] > .btn.btn-primary.btn-issues {
+		text-transform: none;
+		background: #0000b3 !important;
+		border-radius: 5px;
+		color: #fff;
+		&:hover {
+			background: #fff !important;
+			color: #0000b3 !important;
+			border: 1px solid #0000b3;
+		}
+	}
+}
+
+#btnDelete {
+	border: 1px solid #4d1a00;
+	background: #b33c00 !important;
+	margin-bottom : 20px;
+	color: #fff;
+	text-transform: none;
+
+	&:hover{
+		background:#802b00 !important;
+	}
+}
+
+#issues-container {
+	margin: 75px auto 75px auto;
+
+	& > .row > [class^='col'] > .tab-content {
+		border: 1px solid #dddddd;
+		margin: 15px 0px 15px 0px;
+		min-height: 300px;
+		max-height: 300px;
+		max-width: 1000px;
+		overflow: auto;
+	}
+
+	& > .row > [class^='col-'] > ul.nav.nav-pills {
+	  & > li > a {
+	    color: #707070;
+	  }
+
+	  & > li.active > a{
+	    background: #000080;
+	    font-weight: bold;
+	    color: #fff;
+	  }
+
+	  & > li > a:hover {
+	    background: #0000b3;
+	    color: #fff !important;
+	  }
+	}
+
+	& > .row > [class^='col'] > .btn.btn-primary.btn-new-issue {
+		border-radius: 5px;
+		color: #fff;
+		background: #000080 !important;
+		text-transform: none;
+
+		&:hover {
+			color: #000080 !important;
+			background: #fff !important;
+			border: 1px solid #000080;
+		}
+	}
+}
+
+#open-content > ul {
+	list-style-type: none;
+	padding: 0px;
+	& > li {
+		margin: 10px 10px 0px 10px;
+	}
+	& > li:before {
+		content: "\f06a";
+		font-family: FontAwesome;
+		color: #00cc44;
+	}
+}
+
+#issue-title > a {
+	text-decoration: none;
+	font-size: 15px;
+	color: #000;
+	&:hover {
+		color: #0366d6;
+	}
+}
+
+#issue-subtitle {
+	color: #707070;
+	font-size: 13px;
+	margin-left: 16px;
+
+	& > a {
+		color: #707070;
+		text-decoration: none;
+		&:hover {
+			color: #0366d6;
+		}
+	}
+}
+
+#new-issue-container {
+	margin: 75px 0px 75px 0px;
+}
+
+.textfield_issue {
+	margin-left: 10px;
+	font-size: 15px;
+	width: 563px;
+}
+
+#issue-show {
+	margin: 75px 0px 75px 0px;
+
+	& > .row > [class^='col'] > h1 {
+		text-align: left;
+	}
+	& > .row > [class^='col'] > h5 > a.btn.btn-primary.btn-status {
+		background: #00cc44 !important;
+		text-transform: none;
+		border: 1px solid transparent;
+	}
+	& > .row > [class^='col'] > .row > [class^='col'] > img.profile_profile_pic {
+		margin-top: 10px;
+	}
+}
+
+#commentCard {
+	border-radius: 10px;
+
+	& > hr {
+		margin-top: 0px;
+	}
+
+	& > .card-header {
+		font-size: 15px;
+		margin: 10px 0px 10px 10px;
+		color: #707070;
+	}
+
+	& > .card-body > h5 {
+		font-size: 15px;
+		margin-left: 10px;
+		color: #000;
+	}
+}
+
+#testct {
+	background: #fff;
+}

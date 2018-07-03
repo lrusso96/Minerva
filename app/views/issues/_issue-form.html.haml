@@ -1,0 +1,13 @@
+= form_for [@user, @paper, @issue] do |f|
+	.field
+		= f.label :title, class:"label_new"
+		%br
+		= f.text_field :title, autofocus:true, autocomplete:"on", class:"textfield_issue", maxlength: '70', placeholder: "Insert here the title about issue."
+
+	.field
+		= f.label :description, class:"label_new"
+		%br
+		= f.text_area :description, autofocus:true, autocomplete:"on", class:"textarea_new", rows: '10', cols: '60', maxlength: '510',minlength: '10', placeholder: "Insert here the description about issue.", id: "paper_description"
+
+	.actions
+		= f.submit "Create issue", class:"btn btn-green", id:"btn-new"

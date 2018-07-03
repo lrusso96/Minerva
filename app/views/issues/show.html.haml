@@ -1,10 +1,30 @@
-#paper_overview.container-fluid.left
-  %h1= @issue.title
-  %h3 Opened by
-  = link_to @opener.fullname, @opener
-  %h3 Description
-  = @issue.description
+#issue-show.container-fluid
+	.row
+		.col-xs-3.col-sm-3.col-md-3.col-lg-3
+		.col-xs-6.col-sm-6.col-md-6.col-lg-6
+			%h1.left
+				= @issue.title
+			%h5
+				= link_to "Open", "#",class: "btn btn-primary btn-status disabled"
+				= link_to @opener.fullname, @opener
+				="open this issue on "+opened_date_of(@issue)
+			%hr.my-4
+			.row
+				.col-xs-2.col-sm-2.col-md-2.col-lg-2
+					= gravatar_for @opener, size: 50
+				.col-xs-8-col-sm-8.col-md-8.col-lg-8
+					#commentCard.card
+						.card-header Commented tot hours ago
+						%hr
+						.card-body
+							%h5.card-text 
+								= @issue.description
+						%hr.my-4
+						.card-footer
+							%h3 Like
 
-  - if can? :destroy, @issue
-    %h3 Advanced settings
-    = button_to "Delete this issue", user_paper_issue_path(@issue), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-delete"
+			- if can? :destroy, @issue
+				%h3 Advanced settings
+				= button_to "Close issue", user_paper_issue_path(@issue), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-close-issue"
+		.col-xs-3.col-sm-3.col-md-3.col-lg-3
+			= link_to "Reply", '#', class: "btn btn-primary btn-green"

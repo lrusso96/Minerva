@@ -532,8 +532,10 @@ hr.light{
 }
 
 #profile-container, #password-container, #account-container {
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 10px 0px !important;
 }
+
+
 
 #profile-container > .field > select {
   border-radius: 20px;
@@ -572,3 +574,21 @@ hr.light{
 #account-container > .field > p {
   margin-bottom: 0px;
 }
+
+
+#profile-container {
+  margin: 75px auto 75px auto;
+
+  & > .row > [class^='col'] > .row > [class^='col'] {
+    padding: 0px;
+  }
+
+  & > .row > [class^='col'] > .row > [class^='col'] > .img-circle {
+    text-align: center;
+  }
+
+  & > .row > [class^='col'] > .row > [class^='col'] > h2 {
+    text-align: left;
+  }
+}
+

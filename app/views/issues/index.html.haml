@@ -1,10 +1,39 @@
-%h1= "All opened issues of " + @paper.title
-.container
-  = will_paginate
-  %ul.issues
-    - @issues.each do |issue|
-      %li
-        %span= issue.title
-        %span= "(opened "+ opened_date_of(issue) + ")"
-        %span= link_to "See more", user_paper_issue_path(user_id: @user.id, paper_id: @paper.id, id: issue.id)
-  = will_paginate
+#issues-container.container-fluid
+	.row
+		.col-xs-3.col-sm-3.col-md-3.col-lg-3
+		.col-xs-6.col-sm-6.col-md-6.col-lg-6
+			%ul.nav.nav-pills
+				%li.active
+					%a{:href => '#open-content', "data-toggle" =>"tab"}
+						%i.fas.fa-exclamation-triangle
+						Open
+				%li
+					%a{:href => '#closed-content', "data-toggle" =>"tab"}	
+						%i.fas.fa-check
+						Closed
+
+			.tab-content.clearfix
+				#open-content.tab-pane.active
+					%ul
+						- @issues.each do |issue|
+							%li
+								-if !issue.closed
+									%span#issue-title
+										= link_to issue.title, user_paper_issue_path(user_id: @user.id, paper_id: @paper.id, id: issue.id)
+									%br
+									%span#issue-subtitle
+										= "#" + issue.id.to_s + " opened on "+opened_date_of(issue)+" by "
+										= link_to( (User.find(issue.opener_id)).fullname, user_path(id: issue.opener_id))
+								%hr
+				#closed-content.tab-pane
+					- @issues.each do |issue|
+						-if issue.closed
+							%span#issue-title
+								= link_to issue.title, user_paper_issue_path(user_id: @user.id, paper_id: @paper.id, id: issue.id)
+							%br
+							%span#issue-subtitle
+								//= "#" + issue.id.to_s + " closed on "+closed_date_of(issue)+" by "
+								//= link_to( (User.find(issue.opener_id)).fullname, user_path(id: issue.opener_id))
+							%hr
+		.col-xs-3.col-sm-3.col-md-3.col-lg-3
+			=link_to "New issue", new_user_paper_issue_path(paper_id: @paper.id, user_id: current_user), class: "btn btn-primary btn-new-issue"
