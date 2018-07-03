@@ -1,6 +1,7 @@
 class Issue < ApplicationRecord
   belongs_to :paper
-  belongs_to :opener, class_name: "User"
+  belongs_to :opener, class_name: 'User'
+  has_many :comments, dependent: :destroy
 
   # Validations
   validates :opener, presence: true
