@@ -5,9 +5,12 @@
 			%h1.left
 				= @issue.title
 			%h5
-				= link_to "Open", "#",class: "btn btn-primary btn-status disabled"
+				-if @issue.closed
+					= link_to "Closed", "#",class: "btn btn-primary btn-status-closed disabled"
+				-else
+					= link_to "Open", "#",class: "btn btn-primary btn-status-open disabled"
 				= link_to @opener.fullname, @opener
-				="open this issue on "+opened_date_of(@issue)
+				="opened this issue on " + opened_date_of(@issue)
 			%hr.my-4
 			.row
 				.col-xs-2.col-sm-2.col-md-2.col-lg-2
@@ -17,14 +20,14 @@
 						.card-header Commented tot hours ago
 						%hr
 						.card-body
-							%h5.card-text 
+							%h5.card-text
 								= @issue.description
 						%hr.my-4
 						.card-footer
 							%h3 Like
 
-			- if can? :destroy, @issue
+			- if (!@issue.closed && can?(:destroy, @issue))
 				%h3 Advanced settings
-				= button_to "Close issue", user_paper_issue_path(@issue), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-close-issue"
+				= link_to('Close issue', user_paper_issue_close_path(issue_id: @issue.id, paper_id: @paper.id, user_id: current_user.id), data: { confirm: "Are you sure?" }, method: :post, class: "btn btn-danger btn-close-issue")
 		.col-xs-3.col-sm-3.col-md-3.col-lg-3
 			= link_to "Reply", '#', class: "btn btn-primary btn-green"

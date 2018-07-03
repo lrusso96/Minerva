@@ -36,7 +36,7 @@
 			border: 1px solid #e6ac00;
 		}
 	}
-	
+
 	& > .row > [class^='col'] > .row > [class^='col'] > .btn.btn-primary.btn-issues {
 		text-transform: none;
 		background: #0000b3 !important;
@@ -118,6 +118,19 @@
 	}
 }
 
+#closed-content > ul {
+	list-style-type: none;
+	padding: 0px;
+	& > li {
+		margin: 10px 10px 0px 10px;
+	}
+	& > li:before {
+		content: "\f00c";
+		font-family: FontAwesome;
+		color: #ff0000;
+	}
+}
+
 #issue-title > a {
 	text-decoration: none;
 	font-size: 15px;
@@ -157,11 +170,16 @@
 	& > .row > [class^='col'] > h1 {
 		text-align: left;
 	}
-	& > .row > [class^='col'] > h5 > a.btn.btn-primary.btn-status {
+	& > .row > [class^='col'] > h5 > a.btn.btn-primary.btn-status-open {
 		background: #00cc44 !important;
 		text-transform: none;
 		border: 1px solid transparent;
 	}
+  & > .row > [class^='col'] > h5 > a.btn.btn-primary.btn-status-closed {
+    background: #ff0000 !important;
+    text-transform: none;
+    border: 1px solid transparent;
+  }
 	& > .row > [class^='col'] > .row > [class^='col'] > img.profile_profile_pic {
 		margin-top: 10px;
 	}

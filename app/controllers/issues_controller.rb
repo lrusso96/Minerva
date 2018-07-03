@@ -57,6 +57,14 @@ class IssuesController < ApplicationController
     redirect_to root_url
   end
 
+  def close
+    session[:return_to] ||= request.referrer
+    issue = Issue.find_by_id(params[:issue_id])
+    authorize! :destroy, issue
+    issue.update_attribute(:closed, true)
+    redirect_to session.delete(:return_to)
+  end
+
   private
 
   def issue_params
