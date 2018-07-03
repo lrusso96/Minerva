@@ -6,6 +6,7 @@ class IssuesController < ApplicationController
     @paper = @user.papers.find_by_id(params[:paper_id])
     redirect_to root_url if @paper.nil?
     @issues = @paper.issues.paginate(page: params[:page])
+    @openers = @issues.map { |i| User.find_by_id(i.opener_id) }
     authorize! :show, @issues
   end
 

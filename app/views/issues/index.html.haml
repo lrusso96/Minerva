@@ -15,7 +15,7 @@
 			.tab-content.clearfix
 				#open-content.tab-pane.active
 					%ul
-						- @issues.each do |issue|
+						- @issues.zip(@openers).each do |issue, opener|
 							-unless issue.closed
 								%li
 									%span#issue-title
@@ -23,11 +23,11 @@
 									%br
 									%span#issue-subtitle
 										= "#" + issue.id.to_s + " opened on "+opened_date_of(issue)+" by "
-										= link_to( (User.find(issue.opener_id)).fullname, user_path(id: issue.opener_id))
+										= link_to opener.fullname, user_path(id: opener.id)
 								%hr
 				#closed-content.tab-pane
 					%ul
-						- @issues.each do |issue|
+						- @issues.zip(@openers).each do |issue, opener|
 							-if issue.closed
 								%li
 									%span#issue-title
@@ -35,7 +35,7 @@
 									%br
 									%span#issue-subtitle
 										= "#" + issue.id.to_s + " closed on "+closed_date_of(issue)+" by "
-										= link_to( (User.find(issue.opener_id)).fullname, user_path(id: issue.opener_id))
+										= link_to opener.fullname, user_path(id: opener.id)
 									%hr
 		.col-xs-3.col-sm-3.col-md-3.col-lg-3
-			=link_to "New issue", new_user_paper_issue_path(paper_id: @paper.id, user_id: current_user), class: "btn btn-primary btn-new-issue"
+			=link_to "New issue", new_user_paper_issue_path(paper_id: @paper.id, user_id: @user.id), class: "btn btn-primary btn-new-issue"

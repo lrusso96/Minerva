@@ -22,18 +22,10 @@
         .col-xs-6.col-sm-6.col-md-6.col-lg-6
           = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
         .col-xs-6.col-sm-6.col-md-6.col-lg-6
-          = link_to "Issues", user_paper_issues_path(paper_id: @paper.id, user_id: current_user.id), class: "btn btn-primary btn-issues"
+          = link_to "Issues", user_paper_issues_path(paper_id: @paper.id, user_id: @user.id), class: "btn btn-primary btn-issues"
 
       - if can? :destroy, @paper
         %h5 Advanced settings
         = button_to "Delete this paper", user_paper_path(@paper), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-delete", id: "btnDelete"
 
     .col-xs-1.col-sm-1.col-md-1.col-lg-1
-
-  
-  
-
-  
-  
-
-  
