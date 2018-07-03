@@ -19,6 +19,7 @@ class IssuesController < ApplicationController
     redirect_to root_url if @issue.nil?
     @opener = User.find_by_id @issue.opener_id
     authorize! :show, @issue
+    @comments = @issue.comments
   end
 
   def new
