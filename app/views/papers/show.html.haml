@@ -6,10 +6,6 @@
         = @paper.title
       %hr.my-4
 
-      -if @paper.liked_by?(current_user)
-        = link_to('Unstar it', user_paper_unstar_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
-      -elsif current_user != @user
-        = link_to('Star paper', user_paper_star_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
       %h3 Author
       = link_to @paper.user.fullname, @paper.user, class: "author"
       %hr.light
@@ -19,10 +15,23 @@
         = @paper.description
       %hr.light
       .row
-        .col-xs-6.col-sm-6.col-md-6.col-lg-6
-          = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
-        .col-xs-6.col-sm-6.col-md-6.col-lg-6
-          = link_to "Issues", user_paper_issues_path(paper_id: @paper.id, user_id: @user.id), class: "btn btn-primary btn-issues"
+        -if @user == current_user
+          .col-xs-6.col-sm-6.col-md-6.col-lg-6
+            = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
+          .col-xs-6.col-sm-6.col-md-6.col-lg-6
+            = link_to "Issues", user_paper_issues_path(paper_id: @paper.id, user_id: @user.id), class: "btn btn-primary btn-issues"
+        - else
+          .col-xs-4.col-sm-4.col-md-4.col-lg-4
+            -if @paper.liked_by?(current_user)
+              = link_to('Unstar it', user_paper_unstar_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
+            -elsif current_user != @user
+              = link_to('Star paper', user_paper_star_path(paper_id: @paper.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star")
+          
+          .col-xs-4.col-sm-4.col-md-4.col-lg-4
+            = link_to "Read full article", url_for(@paper.article), class:"btn btn-primary btn-read" if @paper.article.attached?
+          
+          .col-xs-4.col-sm-4.col-md-4.col-lg-4
+            = link_to "Issues", user_paper_issues_path(paper_id: @paper.id, user_id: @user.id), class: "btn btn-primary btn-issues"
 
       - if can? :destroy, @paper
         %h5 Advanced settings

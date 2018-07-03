@@ -17,6 +17,12 @@
     </div>
 
     <div class="field">
+      <%= f.label :avatar %><br />
+      <%= gravatar_for @user, size: 40 %>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+    </div>
+
+    <div class="field">
       <%= f.label :country %><br />
       <%= f.country_select :country, format: :with_alpha2 , locale: 'it'%>
     </div>

@@ -48,6 +48,18 @@
 			border: 1px solid #0000b3;
 		}
 	}
+
+	& > .row > [class^='col'] > .row > [class^='col'] > .btn.btn-primary.btn-star {
+		border-radius: 5px;
+		color: #fff;
+		background: #ff3300 !important;
+		text-transform: none;
+
+		&:hover {
+			background: #cc2900 !important;
+		}
+
+	}
 }
 
 #btnDelete {
@@ -205,6 +217,13 @@
 	}
 }
 
-#testct {
-	background: #fff;
+#btn-close-issue {
+	text-transform: none;
+	background: #ff0000 !important;
+	color: #fff;
+	border-radius: 5px;
+
+	&:hover {
+		background: #cc0000 !important;
+	}
 }
