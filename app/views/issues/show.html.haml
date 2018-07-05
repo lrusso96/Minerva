@@ -25,12 +25,30 @@
 						%hr.my-4
 						.card-footer
 							%h3 Like
+						%br
+				.col-xs-2.col-sm-2.col-md-2.col-lg-2
+					- if !@issue.closed
+						= link_to "Reply", '#', class: "btn btn-primary btn-green"
+					- else
+						= link_to "Reply", '#', class: "btn btn-primary btn-green disabled"
+				.row
+					- @comment.each do |comment|
+						.col-xs-2.col-sm-2.col-md-2.col-lg-2
+							= gravatar_for comment.user, size: 50
+						.col-xs-8-col-sm-8.col-md-8.col-lg-8
+							#commentCard.card
+								.card-header Commented tot hours ago
+								%hr
+								.card-body
+									%h5.card-text
+										= comment.comment
+									%hr.my-4
+								.card-footer
+									%h3 Like
+							%br
+						.col-xs-2.col-sm-2.col-md-2.col-lg-2
 
 			- if (!@issue.closed && can?(:destroy, @issue))
 				%h3 Advanced settings
 				= link_to('Close issue', user_paper_issue_close_path(issue_id: @issue.id, paper_id: @paper.id, user_id: @user.id), data: { confirm: "Are you sure?" }, method: :post, class: "btn btn-primary", id: "btn-close-issue")
-		.col-xs-3.col-sm-3.col-md-3.col-lg-3
-			- if !@issue.closed
-				= link_to "Reply", '#', class: "btn btn-primary btn-green"
-			- else
-				= link_to "Reply", '#', class: "btn btn-primary btn-green disabled"
+		

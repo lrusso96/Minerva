@@ -25,7 +25,7 @@ class StaticPagesController < ApplicationController
       @found_papers = MinervaApi::Arxiv.search(query)
       authorize! :show, @found_papers
     end
-    @top_papers = Paper.order(:likers_count).last(5).reverse
+    @top_papers = Paper.order(:likers_count).last(8).reverse
     @recent_papers = Paper.order(:created_at).last(5).reverse
     @matching_papers = Paper.where('description LIKE ? OR title LIKE ?',
                                    "%#{query}%", "%#{query}%")

@@ -1,0 +1,5 @@
+.container-fluid.center
+	= form_tag(explore_path, method: :get) do
+		= text_field_tag("query", "", placeholder: "#{"Search"}")
+		= button_to "", class: "btn btn-primary btn-search" do
+			%i.fas.fa-search

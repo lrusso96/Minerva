@@ -1,4 +1,11 @@
-.container
+#explore-container.container-fluid
+  .row
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
+    .col-xs-8.col-sm-8.col-md-8.col-lg-8
+      %h2 Search outside Minerva
+      = render 'search-form'
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
+
   -unless @found_papers.nil?
     %h2 Search results (outside)
     %ul
@@ -22,23 +29,49 @@
           %br
           %span= "Publication date: " + p.created_at.strftime('%B %d, %Y')
 
-  %h1 Top papers
-  %ul
+%h1 Top papers
+#top-container.container-fluid
+  .row
     - @top_papers.each do |p|
-      %li
-        = link_to p.title, user_paper_path(p.user.id, p.id)
-        %br
-        %span= p.description
+      #topCard.card.card-cascade-narrower
+        .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
+          %h2.card-header.title
+            = shorten_title p
+          %h3
+            = link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+          %h5
+            %i.far.fa-calendar-alt
+            %span= upload_day_of p
+        %p.card-text
+          = shorten_abstract p
 
-  %h1 Most recent papers
-  %ul
-    - @recent_papers.each do |p|
-      %li
-        = link_to p.title, user_paper_path(p.user.id, p.id)
-        %br
-        %span= p.description
+        .row
+          - if p.user == current_user
+            = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+          - elsif !@starred_papers.blank? && @starred_papers.include?(p)
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                %i.far.fa-star
+                %span Unstar
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+          - else
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                %i.far.fa-star
+                %span Star
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+        
+        #cardFooter.card-footer
+          =p.field
 
-  %h2 Search outside Minerva
-  = form_tag(explore_path, method: :get) do
-    #{text_field_tag :query}
-    \#{submit_tag 'Search'}
+%h1 Recent papers
+%ul
+  - @recent_papers.each do |p|
+    %li
+      = link_to p.title, user_paper_path(p.user.id, p.id)
+      %br
+      %span= p.description
+
+  
