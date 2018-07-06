@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       post 'star',   to: 'socializations#star'
       post 'unstar', to: 'socializations#unstar'
       resources :issues do
-        post 'close',   to: 'issues#close'  
+        post 'close',   to: 'issues#close'
+        resources :comments
       end
     end
   end

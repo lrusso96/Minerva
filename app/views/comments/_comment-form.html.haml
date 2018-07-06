@@ -1,8 +1,8 @@
-= form_for [@issue, @comment] do |f|
+= form_for [@user, @paper, @issue, @comment] do |f|
 	.field
 		= f.label :comment, class:"label_new"
 		%br
-		= f.text_area :description, autofocus:true, autocomplete:"on", class:"textarea_new", rows: '10', cols: '60', maxlength: '510',minlength: '10', placeholder: "Insert here the comment.", id: "paper_description"
+		= f.text_area :comment, autofocus:true, autocomplete:"on", class:"textarea_new", rows: '10', cols: '60', maxlength: '510',minlength: '10', placeholder: "Insert here the comment.", id: "paper_description"
 
 	.actions
 		= f.submit "Create comment", class:"btn btn-green", id:"btn-new"
