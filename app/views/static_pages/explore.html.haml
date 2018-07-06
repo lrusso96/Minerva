@@ -1,3 +1,8 @@
+:javascript
+  function printValue(value){
+    alert(value);
+  }
+
 #explore-container.container-fluid
   .row
     .col-xs-2.col-sm-2.col-md-2.col-lg-2
@@ -7,27 +12,65 @@
     .col-xs-2.col-sm-2.col-md-2.col-lg-2
 
   -unless @found_papers.nil?
-    %h2 Search results (outside)
-    %ul
-      - @found_papers.each do |p|
-        %li
-          %h3= p.title
-          %span= p.summary
+    .row
+      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+        #outside-container.container-fluid
+          %h2 Outside result
           %br
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            - @found_papers.each do |p|
+              .row
+                #resultCard.card.card-cascade-narrower
+                  .view.view-cascade.gradient-card-header
+                    %h2.card-header.title
+                      = shorten_title p
+                    %h5
+                      %i.far.fa-calendar-alt
+                      %span
+                        =p.published
+                  %p.card-text
+                    = shorten_summary p
+                  .row
+                    = link_to "Read more >>", p.link.full ,class: "btn btn-primary btn-read-more pull-right"
+          
+      .col-xs-6.col-sm-6.col-md-6.col-lg-6  
+        #inside-container.container-fluid    
+          %h2 Inside result
           %br
-          %span= "Publication date: " + p.published
-          %br
-          = link_to "Read here", p.link.full
-
-    %h2 Result inside Minerva
-    %ul
-      - @matching_papers.each do |p|
-        %li
-          %h3= link_to p.title, user_paper_path(user_id: p.user.id, id:p.id)
-          %span= p.description
-          %br
-          %br
-          %span= "Publication date: " + p.created_at.strftime('%B %d, %Y')
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            - @matching_papers.each do |p|
+              .row
+                #resultCard.card.card-cascade-narrower
+                  .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
+                    %h2.card-header.title
+                      = shorten_title p
+                    %h3
+                      = link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+                    %h5
+                      %i.far.fa-calendar-alt
+                      %span
+                        = upload_day_of p
+                  %p.card-text
+                    = shorten_abstract p
+                  .row
+                    - if p.user == current_user
+                      = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                    - elsif @sp.include?(p)
+                      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                        = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                          %i.far.fa-star
+                          %span Unstar
+                      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                        = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                    - else
+                      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                        = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                          %i.far.fa-star
+                          %span Star
+                      .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                        = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                  #cardFooter.card-footer
+                    =p.field
 
 %h1 Top papers
 #top-container.container-fluid
@@ -48,7 +91,7 @@
         .row
           - if p.user == current_user
             = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
-          - elsif !@starred_papers.blank? && @starred_papers.include?(p)
+          - elsif @sp.include?(p)
             .col-xs-6.col-sm-6.col-md-6.col-lg-6
               = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
                 %i.far.fa-star
@@ -67,11 +110,39 @@
           =p.field
 
 %h1 Recent papers
-%ul
-  - @recent_papers.each do |p|
-    %li
-      = link_to p.title, user_paper_path(p.user.id, p.id)
-      %br
-      %span= p.description
+#top-container.container-fluid
+  .row
+    - @recent_papers.each do |p|
+      #topCard.card.card-cascade-narrower
+        .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
+          %h2.card-header.title
+            = shorten_title p
+          %h3
+            = link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+          %h5
+            %i.far.fa-calendar-alt
+            %span= upload_day_of p
+        %p.card-text
+          = shorten_abstract p
 
+        .row
+          - if p.user == current_user
+            = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+          - elsif @sp.include?(p)
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                %i.far.fa-star
+                %span Unstar
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+          - else
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                %i.far.fa-star
+                %span Star
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+        
+        #cardFooter.card-footer
+          =p.field
   

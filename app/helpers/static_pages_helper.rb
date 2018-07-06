@@ -10,4 +10,8 @@ module StaticPagesHelper
   def shorten_abstract(p)
     shorten_string p.description, 80
   end
+
+  def shorten_summary(p)
+  	shorten_string p.summary, 80
+  end
 end

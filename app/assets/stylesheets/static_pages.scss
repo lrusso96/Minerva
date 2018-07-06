@@ -616,7 +616,7 @@ hr.light{
 }
 
 #top-container {
-  
+  margin: 15px 0px 15px 0px;
   & > .row {
     overflow-x: auto;
     overflow-y: hidden;
@@ -716,4 +716,118 @@ hr.light{
   margin: 5px 30px 5px 30px;
   border-top: 1px solid #dddddd;
   padding-top: 5px;
+}
+
+#outside-container, #inside-container {
+  margin: 15px 0px 15px 0px;
+
+  & > [class^='col'] {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 600px;
+  }
+
+  & > [class^='col'] > .row {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+
+#resultCard {
+  margin: 0 auto;
+  margin-bottom: 25px;
+  min-width: 80%;
+}
+
+#resultCard > .view {
+  background-color: #0000b3;
+
+  & > h2 {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  & > h3 {
+    text-align: center;
+    color: #fff;
+  }
+  & > h3 a.author_link {
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+
+#resultCard > .view > h5 {
+  text-align: center;
+
+  & > i {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: auto 5px auto 0px;
+  }
+
+  & > span {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    color: #fff;
+  }
+}
+
+#resultCard > p.card-text {
+  margin: 15px 10px 15px 10px;
+  text-align: center;
+}
+
+#resultCard > .row > .btn-read-more {
+  background-color: transparent !important;
+  color: #00b33c !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
+  right: 0;
+  margin-right: 10px;
+}
+
+#resultCard > .row > [class^='col'] > .btn-read-more {
+  background-color: transparent !important;
+  color: #00b33c !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
+  right: 0;
+  margin-right: 10px;
+  margin-top: 18px;
+}
+
+#resultCard > .row > [class^='col'] > .btn-star {
+  background-color: transparent !important;
+  color: #00b33c !important;
+  box-shadow: 0 0 0 0 transparent !important;
+  border: 1px solid transparent;
+  left: 0;
+  margin-left: 10px;
+
+  & > i {
+    font-size: 1.5em;
+  }
+}
+
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: linear-gradient(to left, #000080, #5541a2, #8d7ec3, #c4bde2, #ffffff);
 }
