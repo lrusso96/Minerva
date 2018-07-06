@@ -133,7 +133,6 @@ Then(/^(?:|I )should not see "([^"]*)"$/) do |text|
   else
     assert page.has_no_content?(text)
   end
-
 end
 
 Then %r{/^(?:|I )should not see \/([^\/]*)\/$/} do |regexp|
@@ -279,6 +278,17 @@ When(/^I click new paper button$/) do
     When I click the ".btn-new-paper"
   )
 end
+
+When(/^I click search button$/) do
+  steps %(
+    When I click the ".btn-search"
+  )
+end
+
+When(/^I confirm dialog$/) do
+  page.driver.browser.switch_to.alert.accept
+end
+
 
 When(/^I log out|He logs out$/) do
   steps %(

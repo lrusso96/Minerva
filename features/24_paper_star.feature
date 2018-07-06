@@ -13,6 +13,6 @@ When I log in
 Given I am on simple paper page
 When I follow "Star paper"
 Given I am on homepage
-When I follow "Papermark"
-Then I should be on homepage
-And I should see-js "Nice paper"
+When I open sidebar
+And I follow "Papermark"
+Then I should see "Nice paper"

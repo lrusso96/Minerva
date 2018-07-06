@@ -32,6 +32,11 @@ module NavigationHelpers
       '/users/'
     when /^simple paper page/
       '/users/1/papers/1'
+    when /^simple paper's issues page/
+      '/users/1/papers/1/issues'
+    when /^explore page/
+      '/explore'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
