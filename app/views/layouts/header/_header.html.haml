@@ -2,7 +2,9 @@
   .container
     %nav.navbar.navbar-default
       .navbar-header
-        = link_to "Minerva", root_path, id:"logo"
+        = link_to root_path, id:"logo" do
+          %i.fab.fa-accusoft 
+          Minerva
         %button#toggle-nav.navbar-toggle{"data-toggle" => "collapse", "data-target" => "#navbar"}
           %span.sr-only Toggle navigation
           %span.icon-bar

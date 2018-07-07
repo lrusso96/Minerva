@@ -6,12 +6,14 @@
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  //color: #001a4d;
   color: #cccccc;
   text-transform: capitalize;
   letter-spacing: -1px;
-  padding-top: 9px;
+  //padding-top: 9px;
   font-weight: bold;
+  & > i {
+    font-size: 1.8em;
+  }
   &:hover {
     color: #fff;
     text-decoration: none;
