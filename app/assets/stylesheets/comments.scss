@@ -1,3 +1,27 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#commentCard {
+	
+
+	.card-header {
+		background: #f6f8fa;
+		border-bottom: 1px solid #d1d5da;
+		margin: 0px 0px 0px 0px !important;
+		padding: 10px 0px 10px 0px;
+
+		& > a {
+			margin-left: 5px;
+		}
+	}
+}
+
+#comment-form-container {
+	margin: 75px 0px 75px 0px;
+}
+
+#btn-new-comment {
+	margin-left: 13px;
+}

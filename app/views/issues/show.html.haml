@@ -7,46 +7,45 @@
 			%h5
 				-if @issue.closed
 					= link_to "Closed", "#",class: "btn btn-primary btn-status-closed disabled"
+					= link_to @opener.fullname, @opener
+					="opened this issue on " + opened_date_of(@issue)+ " : "+counter_comment(@comments)
 				-else
 					= link_to "Open", "#",class: "btn btn-primary btn-status-open disabled"
-				= link_to @opener.fullname, @opener
-				="opened this issue on " + opened_date_of(@issue)
+					= link_to @opener.fullname, @opener
+					="opened this issue on " + opened_date_of(@issue)+ " : "+counter_comment(@comments)
 			%hr.my-4
 			.row
-				.col-xs-2.col-sm-2.col-md-2.col-lg-2
+				.col-xs-2.col-sm-2.col-md-2.col-lg-2.center
 					= gravatar_for @opener, size: 50
 				.col-xs-8-col-sm-8.col-md-8.col-lg-8
 					#commentCard.card
 						.card-header
-						%hr
+							= link_to @opener.fullname, user_path(id: @opener.id)
+							%span 
+								= "commented #{time_ago_in_words(@issue.created_at)} ago"
 						.card-body
 							%h5.card-text
 								= @issue.description
 						%hr.my-4
-						.card-footer
-							%h3 Like
-						%br
 				.col-xs-2.col-sm-2.col-md-2.col-lg-2
 					- if !@issue.closed
 						= link_to "Reply", new_user_paper_issue_comment_path(user_id: @user.id, paper_id: @paper.id, issue_id: @issue.id), class: "btn btn-primary btn-green"
 					- else
 						= link_to "Reply", '#', class: "btn btn-primary btn-green disabled"
+			- @comments.each do |comment|
 				.row
-					- @comments.each do |comment|
-						.col-xs-2.col-sm-2.col-md-2.col-lg-2
-							= gravatar_for comment.user, size: 50
-						.col-xs-8-col-sm-8.col-md-8.col-lg-8
-							#commentCard.card
-								.card-header= "#{comment.user.fullname} commented #{time_ago_in_words(comment.created_at)} ago"
-								%hr
-								.card-body
-									%h5.card-text
-										= comment.comment
-									%hr.my-4
-								.card-footer
-									%h3 Like
-							%br
-						.col-xs-2.col-sm-2.col-md-2.col-lg-2
+					.col-xs-2.col-sm-2.col-md-2.col-lg-2.center
+						= gravatar_for comment.user, size: 50
+					.col-xs-8-col-sm-8.col-md-8.col-lg-8
+						#commentCard.card
+							.card-header
+								= link_to comment.user.fullname, user_path(comment.user.id)
+								commented #{time_ago_in_words(comment.created_at)} ago
+							.card-body
+								%h5.card-text
+									= comment.comment
+								%hr.my-4
+					.col-xs-2.col-sm-2.col-md-2.col-lg-2.center
 
 			- if (!@issue.closed && can?(:destroy, @issue))
 				%h3 Advanced settings
