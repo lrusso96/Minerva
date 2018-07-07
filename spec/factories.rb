@@ -23,9 +23,18 @@ FactoryBot.define do
   end
 
   factory :paper do
-    user_id '1'
+    user
     title "Titolo paper"
     description "descrizione paper"
+    after(:build) do |paper|
+      paper.article.attach(io: File.open(File.join(Rails.root, 'db/files/FakePaper.pdf')), filename: 'FakePaper.pdf')
+    end
+  end
+
+  factory :paper_adm, class: Paper do
+    association :user, factory: :admin
+    title "Titolo paper admin"
+    description "descrizione paper admin"
     after(:build) do |paper|
       paper.article.attach(io: File.open(File.join(Rails.root, 'db/files/FakePaper.pdf')), filename: 'FakePaper.pdf')
     end

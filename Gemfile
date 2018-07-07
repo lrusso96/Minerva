@@ -60,6 +60,7 @@ group :development, :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   # RSpec
   gem 'rspec'
   gem 'rspec-rails', '~> 3.7'
