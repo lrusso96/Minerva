@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+    @user.nil? && redirect_to(root_url) && return
     authorize! :show, @user
     @papers = @user.papers.last(5).reverse # show first 5, from newest to oldest
     authorize! :show, @papers

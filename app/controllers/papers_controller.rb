@@ -9,18 +9,15 @@ class PapersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:user_id])
-    redirect_to root_url if @user.nil?
+    @user.nil? && redirect_to(root_url) && return
     @paper = @user.papers.find_by_id(params[:id])
-    redirect_to root_url if @paper.nil?
+    @paper.nil? && redirect_to(root_url) && return
     authorize! :show, @paper
   end
 
   def new
     @user = User.find_by_id(params[:user_id])
-    if @user.nil?
-      redirect_to root_url
-      return
-    end
+    @user.nil? && redirect_to(root_url) && return
     @paper = Paper.new
     @paper.user_id = @user.id
     authorize! :create, @paper

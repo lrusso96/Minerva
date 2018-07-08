@@ -39,4 +39,18 @@ FactoryBot.define do
       paper.article.attach(io: File.open(File.join(Rails.root, 'db/files/FakePaper.pdf')), filename: 'FakePaper.pdf')
     end
   end
+
+  factory :issue do
+    title 'titolo issue'
+    description 'descrizione issue'
+    paper
+    opener_id '1' # can't use factory user because it's already called in :paper
+  end
+
+  factory :issue_adm, class: Issue do
+    title 'titolo issue'
+    description 'descrizione issue'
+    association :paper, factory: :paper_adm
+    opener_id '1' # can't use :admin because it's already called in :paper_adm
+  end
 end

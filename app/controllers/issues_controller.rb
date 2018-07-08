@@ -2,23 +2,23 @@ class IssuesController < ApplicationController
 
   def index
     @user = User.find_by_id(params[:user_id])
-    redirect_to root_url if @user.nil?
+    redirect_to root_url && return if @user.nil?
     @paper = @user.papers.find_by_id(params[:paper_id])
-    redirect_to root_url if @paper.nil?
+    redirect_to root_url && return if @paper.nil?
     @issues = @paper.issues.paginate(page: params[:page])
-    @openers = @issues.map { |i| User.find_by_id(i.opener_id) }
     authorize! :show, @issues
+    @openers = @issues.map { |i| User.find_by_id(i.opener_id) }
   end
 
   def show
     @user = User.find_by_id(params[:user_id])
-    redirect_to root_url if @user.nil?
+    redirect_to root_url && return if @user.nil?
     @paper = @user.papers.find_by_id(params[:paper_id])
-    redirect_to root_url if @paper.nil?
+    redirect_to root_url && return if @paper.nil?
     @issue = @paper.issues.find_by_id(params[:id])
-    redirect_to root_url if @issue.nil?
-    @opener = User.find_by_id @issue.opener_id
+    redirect_to root_url && return if @issue.nil?
     authorize! :show, @issue
+    @opener = User.find_by_id @issue.opener_id
     @comments = @issue.comments
   end
 
@@ -64,7 +64,11 @@ class IssuesController < ApplicationController
     issue = Issue.find_by_id(params[:issue_id])
     authorize! :destroy, issue
     issue.update_attribute(:closed, true)
-    redirect_to session.delete(:return_to)
+    if session[:return_to]
+      redirect_to session.delete(:return_to)
+    else
+      redirect_to root_url
+    end
   end
 
   private
