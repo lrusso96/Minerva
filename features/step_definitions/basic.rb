@@ -289,6 +289,9 @@ When(/^I confirm dialog$/) do
   page.driver.browser.switch_to.alert.accept
 end
 
+When(/^I comment with "([^"]*)"$/) do |str|
+  fill_in 'paper_description', with: str
+end
 
 When(/^I log out|He logs out$/) do
   steps %(

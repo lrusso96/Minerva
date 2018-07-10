@@ -13,14 +13,14 @@
           -if @user.country?
             = image_tag "country-4x3/#{@user.country.downcase}.svg", width: 32, alt: @user.country, style: "margin-left: 10px"
     .col-xs-4.col-sm-4.col-md-4.col-lg-4
-      
-      
+
+
 %h1
   = gravatar_for @user
   = @user.fullname
 .center
   = @user.formatted_nickname
-  
+
   %br
   %br
   = "member since " + registration_day_of(@user)
@@ -30,7 +30,7 @@
     %h3 Overview
     = "You signed in #{@user.sign_in_count} times (last time was #{time_ago_in_words(@user.last_sign_in_at)} ago)"
     %br
-    = "You have uploaded #{@user.papers.size} papers"
+    = "You have uploaded #{pluralize(@user.papers.size, 'paper')}"
 
 -else
   .container

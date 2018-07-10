@@ -34,6 +34,8 @@ module NavigationHelpers
       '/users/1/papers/1'
     when /^simple paper's issues page/
       '/users/1/papers/1/issues'
+    when /^simple comment page/
+      '/users/1/papers/1/issues/1/comments/new'
     when /^explore page/
       '/explore'
 

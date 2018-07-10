@@ -10,4 +10,6 @@ And I upload a paper
 When I follow "Read more"
 And I press "Delete this paper"
 Given I am on homepage
-Then I should not see-js "Random title"
+When I open sidebar
+And I follow "Recent Papers"
+Then I should not see "Random title"
