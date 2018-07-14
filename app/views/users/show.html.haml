@@ -1,57 +1,104 @@
-#profile-container.container-fluid
+#data-container.container-fluid
   .row
+    .col-xs-1.col-sm-1.col-md-1.col-lg-1
     .col-xs-6.col-sm-6.col-md-6.col-lg-6
       .row
         .col-xs-6.col-sm-6.col-md-6.col-lg-6
-          .img-circle
+          .img-circle.center
             = gravatar_for @user, size: 150
         .col-xs-6.col-sm-6.col-md-6.col-lg-6
           %h2
             = @user.fullname
-          %h4
+          %h3
             = @user.formatted_nickname
           -if @user.country?
-            = image_tag "country-4x3/#{@user.country.downcase}.svg", width: 32, alt: @user.country, style: "margin-left: 10px"
-    .col-xs-4.col-sm-4.col-md-4.col-lg-4
+            = image_tag "country-4x3/#{@user.country.downcase}.svg", width: 32, alt: @user.country
+          %h5
+            = "member since " + registration_day_of(@user)
+    .col-xs-5.col-sm-5.col-md-5.col-lg-5
+
+#overview-container.container-fluid
+  .row
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
+    .col-xs-8.col-sm-8.col-md-8.col-lg-8
+      -if @user == current_user
+        %h3 Overview
+        %hr.my-4
+        .row
+          .col-xs-6.col-sm-6.col-md-6.col-lg-6
+            #statsCard.card
+              %i.fas.fa-signal
+              %h3.card-title
+                = @user.sign_in_count
+              %p.card-text Signed in
+              
+          .col-xs-6.col-sm-6.col-md-6.col-lg-6
+            #statsCard.card
+              %i.fas.fa-cloud-upload-alt
+              %h3.card-title
+                = @user.papers.size
+              %p.card-text Papers uploaded
+        
+        //= "You signed in #{@user.sign_in_count} times (last time was #{time_ago_in_words(@user.last_sign_in_at)} ago)"
+        //%br
+        //= "You have uploaded #{@user.papers.size} papers"
+
+      -else
+        -if @user.followed_by?(current_user)
+          = link_to('Unfollow', user_unfollow_path(@user), method: :post, class: "btn btn-primary", id: "btn-follow")
+        -else
+          = link_to('Follow', user_follow_path(@user), method: :post, class: "btn btn-primary btn-follow", id: "btn-follow")
+        - if !@user.website.nil?
+          %h4 Personal website
+          = link_to "More about me", @user.website.to_s
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
 
 
-%h1
-  = gravatar_for @user
-  = @user.fullname
-.center
-  = @user.formatted_nickname
+#mostRecent-container.container-fluid
+  .row
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2
+    .col-xs-8.col-sm-8.col-md-8.col-lg-8
+      - if @user.papers.any?
+        %h3 Most recent papers
+        %hr.my-4
+        .row
+          .col-xs-3.col-sm-3.col-md-3.col-lg-3
+          .col-xs-6.col-sm-6.col-md-6.col-lg-6
+            - @papers.each do |p|
+              #recentCard.card.card-cascade-narrower
+                .view.view-cascade.gradient-card-header{style: "background-color: #{p.color}"}
+                  %h2.card-header
+                    = shorten_title p
+                  - if current_user != p.user
+                    %h3= link_to p.user.fullname, user_path(p.user.id), class: "author_link"
+                  - else
+                    %h3
+                      = p.user.fullname
+                  %h5
+                    %i.far.fa-calendar-alt
+                    %span= upload_day_of p
+                %p.card-text
+                  = shorten_abstract p
 
-  %br
-  %br
-  = "member since " + registration_day_of(@user)
-
--if @user == current_user
-  .container
-    %h3 Overview
-    = "You signed in #{@user.sign_in_count} times (last time was #{time_ago_in_words(@user.last_sign_in_at)} ago)"
-    %br
-    = "You have uploaded #{pluralize(@user.papers.size, 'paper')}"
-
--else
-  .container
-    -if @user.followed_by?(current_user)
-      = link_to('Unfollow', user_unfollow_path(@user), method: :post)
-    -else
-      = link_to('Follow', user_follow_path(@user), method: :post)
-    %h3 Personal website
-    = link_to "More about me", @user.website.to_s
-
-  .container
-    - if @user.papers.any?
-
-      %h3 Most recent papers
-      %ol
-        - @papers.each do |p|
-          %li
-            = link_to p.title, user_paper_path(p.user.id, p.id)
-            %br
-            %span= p.description
-            - if p.article.attached?
-              %span= link_to "Read article", url_for(p.article)
-            %br
-            %br
+                .row
+                  - if p.user == current_user
+                    = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                  - elsif @sp.include?(p)
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                      = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                        %i.far.fa-star
+                        %span Unstar
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                      = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                  - else
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                      = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                        %i.far.fa-star
+                        %span Star
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                      = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                .row
+                  #cardFooter.card-footer
+                    =p.field
+          .col-xs-3.col-sm-3.col-md-3.col-lg-3
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2

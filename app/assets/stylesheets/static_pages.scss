@@ -833,3 +833,73 @@ hr.light{
   border-radius: 10px;
   background-image: linear-gradient(to left, #000080, #5541a2, #8d7ec3, #c4bde2, #ffffff);
 }
+
+#data-container {
+  margin: 75px 0px 75px 0px;
+
+  & > .row > [class^='col'] > .row > [class^='col'] > img-circle {
+    text-align: left;
+  }
+
+  & > .row > [class^='col'] > .row > [class^='col'] > h2,h3,h5 {
+    text-align: left;
+  }
+}
+#overview-container, #mostRecent-container {
+  margin: 50px 0px 50px 0px;
+}
+
+#btn-follow {
+  margin-left: 35px;
+  text-transform: none;
+  border-radius: 5px;
+  background: #4d4dff !important;
+  border: 1px solid #1a1aff;
+  &:hover {
+    background: #1a1aff !important;
+    border: 1px solid #4d4dff;
+  }
+}
+
+#overview-container > .row > [class^='col'] > .row > [class^='col'] > .circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #0000cc;
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+
+  & > h1 {
+    padding-top: 50px;
+  }
+
+  & > p {
+    color: #fff;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+
+#statsCard {
+  margin: 50px 25px 50px 0px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  
+  & > p {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+
+  & > i {
+    height: 100px;
+    width: 100px;
+    font-size: 4.5em;
+    padding-top:16px;
+    color: #000080;
+  }
+}

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user.nil? && redirect_to(root_url) && return
     authorize! :show, @user
     @papers = @user.papers.last(5).reverse # show first 5, from newest to oldest
+    @sp = current_user.likees(Paper).last(5).reverse
     authorize! :show, @papers
   end
 
