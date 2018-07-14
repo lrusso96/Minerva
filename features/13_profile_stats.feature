@@ -9,5 +9,5 @@ When I log in
 And I upload a paper
 Given I am on homepage
 When I follow "Profile"
-Then I should see "last time was"
-And I should see "You have uploaded 1 paper"
+Then I should see "Signed in"
+And I should see "Papers uploaded"
