@@ -53,4 +53,10 @@ FactoryBot.define do
     association :paper, factory: :paper_adm
     opener_id '1' # can't use :admin because it's already called in :paper_adm
   end
+
+  factory :comment do
+    comment 'commento'
+    association :issue, factory: :issue_adm
+    user
+  end
 end

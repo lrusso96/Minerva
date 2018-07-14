@@ -2,9 +2,9 @@ class IssuesController < ApplicationController
 
   def index
     @user = User.find_by_id(params[:user_id])
-    redirect_to root_url && return if @user.nil?
+    @user.nil? && redirect_to(root_url) && return
     @paper = @user.papers.find_by_id(params[:paper_id])
-    redirect_to root_url && return if @paper.nil?
+    @paper.nil? && redirect_to(root_url) && return
     @issues = @paper.issues.paginate(page: params[:page])
     authorize! :show, @issues
     @openers = @issues.map { |i| User.find_by_id(i.opener_id) }
@@ -12,11 +12,11 @@ class IssuesController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:user_id])
-    redirect_to root_url && return if @user.nil?
+    @user.nil? && redirect_to(root_url) && return
     @paper = @user.papers.find_by_id(params[:paper_id])
-    redirect_to root_url && return if @paper.nil?
+    @paper.nil? && redirect_to(root_url) && return
     @issue = @paper.issues.find_by_id(params[:id])
-    redirect_to root_url && return if @issue.nil?
+    @issue.nil? && redirect_to(root_url) && return
     authorize! :show, @issue
     @opener = User.find_by_id @issue.opener_id
     @comments = @issue.comments
@@ -24,15 +24,9 @@ class IssuesController < ApplicationController
 
   def new
     @user = User.find_by_id(params[:user_id])
-    if @user.nil?
-      redirect_to root_url
-      return
-    end
+    @user.nil? && redirect_to(root_url) && return
     @paper = @user.papers.find_by_id(params[:paper_id])
-    if @paper.nil?
-      redirect_to root_url
-      return
-    end
+    @paper.nil? && redirect_to(root_url) && return
     @issue = Issue.new
     @issue.opener_id = current_user.id
     @issue.paper_id = @paper.id
@@ -54,6 +48,7 @@ class IssuesController < ApplicationController
 
   def destroy
     issue = Issue.find_by_id(params[:id])
+    issue.nil? && redirect_to(root_url) && return
     authorize! :destroy, issue
     issue.destroy
     redirect_to root_url
@@ -62,6 +57,7 @@ class IssuesController < ApplicationController
   def close
     session[:return_to] ||= request.referrer
     issue = Issue.find_by_id(params[:issue_id])
+    issue.nil? && redirect_to(root_url) && return
     authorize! :destroy, issue
     issue.update_attribute(:closed, true)
     if session[:return_to]

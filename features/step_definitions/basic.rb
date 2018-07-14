@@ -1,5 +1,6 @@
 require 'uri'
 require 'cgi'
+require 'factory_bot'
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support',
                                    'paths'))
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support',
@@ -329,6 +330,19 @@ When(/^I upload a paper$/) do
     And I attach a paper
     And I press "Create paper"
     Then I should be on homepage
+  )
+end
+
+Given(/^I am an admin$/) do
+  FactoryBot.create(:admin)
+end
+
+When(/^I log in as admin$/) do
+  steps %(
+    Given I am on log in page
+    When I fill in "Email address" with "email_admin@email.com"
+    And I fill in "Password" with "Password"
+    And I press "Log in"
   )
 end
 
