@@ -89,23 +89,26 @@
           = shorten_abstract p
 
         .row
-          - if p.user == current_user
+          - if current_user.nil?
             = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
-          - elsif @sp.include?(p)
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
-                %i.far.fa-star
-                %span Unstar
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
           - else
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
-                %i.far.fa-star
-                %span Star
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
-        
+            - if p.user == current_user
+              - if !@sp.nil?
+                - if @sp.include?(p)
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                      %i.far.fa-star
+                      %span Unstar
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                - else
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                      %i.far.fa-star
+                      %span Star
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+          
         #cardFooter.card-footer
           =p.field
 
@@ -126,22 +129,25 @@
           = shorten_abstract p
 
         .row
-          - if p.user == current_user
+          - if current_user.nil?
             = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
-          - elsif @sp.include?(p)
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
-                %i.far.fa-star
-                %span Unstar
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
           - else
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
-                %i.far.fa-star
-                %span Star
-            .col-xs-6.col-sm-6.col-md-6.col-lg-6
-              = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+            - if p.user == current_user
+              - if !@sp.nil?
+                - if @sp.include?(p)
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to( user_paper_unstar_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                      %i.far.fa-star
+                      %span Unstar
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
+                - else
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to( user_paper_star_path(paper_id: p.id, user_id: current_user.id), method: :post, class: "btn btn-primary btn-star") do
+                      %i.far.fa-star
+                      %span Star
+                  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    = link_to "Read more >>", user_paper_path(p.user.id, p.id),class: "btn btn-primary btn-read-more pull-right"
         
         #cardFooter.card-footer
           =p.field

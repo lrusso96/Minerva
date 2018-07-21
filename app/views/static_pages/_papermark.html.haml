@@ -3,7 +3,7 @@
     .col-xs-10.col-sm-10.col-md-10.col-lg-10
       %h1.head My Papermarks
       %hr.my-4
-      - unless @starred_papers.nil?
+      - if !@starred_papers.blank?
         .row
           - @starred_papers.each do |starred_paper|
             .col-xs-4.col-sm-4.col-md-4.col-lg-4
@@ -27,3 +27,11 @@
                 .row
                   #cardFooter.card-footer
                     =starred_paper.field
+      - else 
+        #noFeeds
+          .row
+            .col-xs-12.col-sm-12.col-md-12.col-lg.12
+              %i.far.fa-eye-slash
+            .col-xs-12.col-sm-12.col-md-12.col-lg.12
+              %span No papermark available.
+

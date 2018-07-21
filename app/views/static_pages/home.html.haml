@@ -13,9 +13,6 @@
       else if(elem == 'MarkLink'){
         $('#home-container').html("#{j render(partial: 'static_pages/papermark')}");
       }
-      else if(elem == 'CollectionLink'){
-        $('#home-container').html('collection section');
-      }
       else if(elem == 'FollowersLink'){
         $('#home-container').html("#{j render(partial: 'static_pages/followers')}");
       }
@@ -24,8 +21,15 @@
       }
   }
 
+  $(document).ready(function(){
+    setTimeout(function(){
+      $('#flash').remove();
+    }, 2000);
+  })
+
+
 - flash.each do |message_type, message|
-  = content_tag(:div, sanitize(message), class: "alert-#{message_type} alert ")
+  = content_tag(:div, sanitize(message), class: "alert-#{message_type} alert ", id: "flash")
 
 
 - if user_signed_in?
@@ -51,10 +55,6 @@
           %a{:href => '#'}
             %i.far.fa-star
             Papermark
-        %li#CollectionLink
-          %a{:href => '#'}
-            %i.fas.fa-box-open
-            Collection
         %li#FollowersLink
           %a{:href => '#'}
             %i.fas.fa-users
@@ -72,14 +72,6 @@
     .overlay
     #home-container.container-fluid
       = render 'mypapers'
-    //%ul#progress-bar.progressbar
-    //  %li.active Start
-    //  %li Follow
-    //  %li Step 3
-
-
-    //= render 'mypapers'
-    //= render 'myfeed'
 - else
 
   /* Image Slider && Form*/
@@ -119,21 +111,21 @@
         #services-read.card
           %i.fas.fa-book
           %h3.card-title Read
-          %p.card-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          %p.card-text Start reading shared papers by people all around the world !
           %button.btn.btn-primary.btn-card{:href => '#'} Go to read
 
       .col-xs-12.col-sm-6.col-md-4.col-lg-4
         #services-learn.card
           %i.fas.fa-graduation-cap
           %h3.card-title Learn
-          %p.card-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          %p.card-text Amazing possibilities to learn a lot from starred papers of Minerva.
           %button.btn.btn-primary.btn-card{:href => '#'} Go to learn
 
       .col-xs-12.col-sm-6.col-md-4.col-lg-4
         #services-share.card
           %i.fas.fa-share-alt
           %h3.card-title Share
-          %p.card-text Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          %p.card-text You can shared your own papers to make it known to Minerva's users.
           %button.btn.btn-primary.btn-card{:href => '#'} Go to share
 
   %hr.my-4
@@ -198,7 +190,7 @@
     .row.padding
       .col-xs-12.col-sm-12.col-md-12.col-lg-12
         %h2.display-4 Our Goal
-        %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.
+        %p Our Goal ? It's very simple, we will to rally students, PhD students and teachers to collaborate together to improve each other. The best way to reach this goal is via internet, precisely via a website that we have called Minerva. Why Minerva? Because we thought to make a tribute at University La Sapienza, where we are currently studying. It can be view like an opportunities to share own paper or read paper's users. We worked a lot to improve a user experience, because the best thing that a user can ask to us, is to have all Minerva's functionality within reach in a click.
         %br
       //.col-xs-6.col-sm-6.col-md-6.col-lg-6
       //  %img.img-fluid=image_tag('missing-image.png')

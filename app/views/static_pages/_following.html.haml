@@ -3,7 +3,7 @@
 		.col-xs-10.col-sm-10.col-md-10.col-lg-10
 			%h1	Followees
 			%hr.my-4
-			- unless @followees.nil?
+			- if !@followees.blank?
 				#followerContainer
 					%table#followerTable
 						%tbody
@@ -18,3 +18,10 @@
 										= link_to('Unfollow', user_unfollow_path(followee), method: :post, class: "btn btn-primary btn-follower")
 									-else
 										= link_to('Follow', user_follow_path(followee), method: :post, class: "btn btn-primary btn-follower")
+			- else
+				#noFeeds
+					.row
+						.col-xs-12.col-sm-12.col-md-12.col-lg.12
+							%i.fas.fa-user-friends
+						.col-xs-12.col-sm-12.col-md-12.col-lg.12
+							%span No following available.

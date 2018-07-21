@@ -45,6 +45,7 @@ function getFields(){
 function setHeaderColor(){
 	$('document').ready(function(){
 		var view_elem = document.getElementById('paper-preview').getElementsByClassName('view')[0];
+		$('#bc1.materialbc').css('border', '1.5px solid #000000');
 		$('.materialbc').click(function(e){
   			view_elem.style.backgroundColor = $(this).css('backgroundColor');
         document.getElementById("hiddenId").value = $(this).css('backgroundColor');
