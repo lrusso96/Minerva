@@ -1,4 +1,4 @@
-# README
+# Minerva [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This is the project for "Architetture software e sicurezza informatica" course held by L. Querzoni and R. Beraldi.
 
@@ -65,4 +65,4 @@ Other tests
 
 ## Dependencies
 
-We developed a gem for this project. You can find it [here](https://gitlab.com/lrusso96/minerva_api)
+We developed a gem for this project. You can find it [here](https://www.github.com/lrusso96/minerva_api)
